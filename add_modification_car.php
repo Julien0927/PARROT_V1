@@ -8,21 +8,21 @@ if(!isset ($_SESSION['user'])){
  
 require_once('lib/tools.php');
 require_once('lib/car.php');
-require_once('lib/category.php');
+//require_once('lib/category.php');
 
 
 
 $errors = [];
 $messages = [];
 $car = [
-    'title' =>'',
-    'description' =>'',
-    'ingredients' =>'',
-    'instructions' =>'',
-    'category_id' =>'',
+    'marque' =>'',
+    'modele' =>'',
+    'prix' =>'',
+    'annee' =>'',
+    'kilometre' =>'',
+    'equipements' =>'',
+    
 ];
-
-$categories = getCategories($pdo);
 
 
 if(isset ($_POST['saveCar'])){
@@ -35,7 +35,7 @@ if (isset ($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != ''){
 
             $fileName = uniqid().'-'.slugify($_FILES['file']['name']);
             
-            move_uploaded_file($_FILES['file']['tmp_name'], _CARS_IMG_PATH_.$fileName);
+            move_uploaded_file($_FILES['file']['tmp_name'], _CARS_IMG_PATH_ .$fileName);
 
         } else {
             // Sinon on affiche un message erreur
@@ -44,23 +44,37 @@ if (isset ($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != ''){
 
 }
 
-   if (!$errors) {
-   $res=saveCar($pdo, $_POST['category'], $_POST['title'], $_POST['description'], $_POST['ingredients'], $_POST['instructions'], $fileName);
+    if(isset($_POST['saveCar'])){
+        $marque = $_POST['marque'];
+        $modele = $_POST['modele'];
+        $prix = $_POST['prix'];
+        $fileName = null;
+        $annee = $_POST['annee'];
+        $annee = $_POST['kilometre'];
+        $annee = $_POST['equipements'];
+
+        if (empty($marque) || empty($modele) || empty($prix) || empty($fileName) || empty($annee) || empty($kilometre) || empty($equipements)) {
+        $errors[] = 'Tous les champs sont obligatoires.';
+    } else {
+   $res=saveCar($pdo,$_POST['marque'], $_POST['modele'], $_POST['prix'], $fileName, $_POST['annee'], $_POST['kilometre'], $_POST['equipements']);
     if($res){
         $messages[] = 'La voiture a bien été enregistrée';
     } else {
         $errors[] = 'La voiture n\'a pas été sauvegardée';
     }
-    }
+    
+    
     $car = [
-        'title' => $_POST['title'],
-        'description' => $_POST['description'],
-        'ingredients' => $_POST['ingredients'],
-        'instructions' => $_POST['instructions'],
-        'category_id' => $_POST['category'],
+        'marque' => $_POST['marque'],
+        'modele' => $_POST['modele'],
+        'prix' => $_POST['prix'],
+        'annee' => $_POST['annee'],
+        'kilometre' => $_POST['kilometre'],
+        'equipements' => $_POST['equipements'],
     ];
 }
- 
+    }
+}
 ?>
 
 <h1>Ajouter une voiture</h1>
@@ -78,32 +92,40 @@ if (isset ($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != ''){
 
 <form method="POST" enctype="multipart/form-data" >
     <div class="mb-2 px-5">
-        <label for="title" class="form-label">Titre</label>
-        <input type="text" name="title" id="title" class="form-control" value="<?=$car['title'];?>">
+        <label for="marque" class="form-label">Marque</label>
+        <input type="text" name="marque" id="marque" class="form-control" value="<?=$car['marque'];?>">
     </div>
     <div class="mb-3 px-5">
-        <label for="description" class="form-label">Description</label>
-        <textarea  name="description" id="description" cols="20" rows="" class="form-control"><?=$car['description'];?></textarea>
+        <label for="modele" class="form-label">Modèle</label>
+        <input type="text"  name="modele" id="modele" class="form-control" value="<?=$car['modele'];?>">
     </div>
     <div class="mb-3 px-5">
-        <label for="ingredients" class="form-label">Ingrédients</label>
-        <textarea  name="ingredients" id="ingredients" cols="30" rows="" class="form-control"><?=$car['ingredients'];?></textarea>
+        <label for="prix" class="form-label">Prix</label>
+        <input type="text"  name="prix" id="prix" class="form-control" value="<?=$car['prix'];?>">
     </div>
     <div class="mb-3 px-5">
-        <label for="instructions" class="form-label">Instructions</label>
-        <textarea  name="instructions" id="instructions" cols="30" rows="" class="form-control"><?=$car['instructions'];?></textarea>
+        <label for="annee" class="form-label">Année</label>
+        <input type="text"  name="annee" id="annee" class="form-control" value="<?=$car['annee'];?>">
     </div>
-    <div class="mb-3 p-5">
-        <label for="category" class="form-label">Catégorie</label>
-        <select  name="category" id="category" class="form-select">
-            <?php foreach($categories as $category){
+    <div class="mb-3 px-5">
+        <label for="kilometre" class="form-label">Kilomètres</label>
+        <input type="text"  name="kilometre" id="kilometre" class="form-control" value="<?=$car['kilometre'];?>">
+    </div>
+    <div class="mb-3 px-5">
+        <label for="equipements" class="form-label">Équipements et options</label>
+        <textarea  name="equipements" id="equipements" cols="30" rows="" class="form-control"><?=$car['equipements'];?></textarea>
+    </div>
+    <!--<div class="mb-3 p-5">
+        <label for="employe" class="form-label">Employé</label>
+        <select  name="employe" id="employe" class="form-select">
+            <?php foreach($users as $user){
                 
                 ?>
-            <option value="<?=$category['id'];?>" <?php if($car['category_id'] == $category['id']) {echo 'selected= "selected"';}?>><?=$category['name'];?></option>
+            <option value="<?=$user['id'];?>" <?php if($car['Employe_id'] == $user['id']) {echo 'selected= "selected"';}?>><?=$user['name'];?></option>
             <?php } ?>
             
         </select>
-    </div>
+    </div>-->
     <div class="mb-3 p-5">
         <label for="file" type="form-label">Image</label>
         <input type="file" name="file" id="file">

@@ -13,38 +13,74 @@ $car = getCarById($pdo, $id);
 if($car) {
   
   
-  $ingredients = linesToArray($car['ingredients']);
-  $instructions = linesToArray($car['instructions']);
+  $marque = linesToArray($car['marque']);
+  $modele = linesToArray($car['modele']);
+  $prix = linesToArray($car['prix']);
+  $annee = linesToArray($car['annee']);
+  $kilometre = linesToArray($car['kilometre']);
+  $equipements = linesToArray($car['equipements']);
   
 ?>
 
 <div class="row flex-lg-row-reverse align-items-center g-5 p-5">
       <div class="col-10 col-sm-8 col-lg-6">
-        <img src="<?=getCarImage($car['image']);?>" class="d-block mx-lg-auto img-fluid" alt="<?=$car['title']?>" width="700" height="500" loading="lazy">
+        <img src="<?=getCarImage($car['image']);?>" class="d-block mx-lg-auto img-fluid" alt="<?=$car['marque']?>" width="700" height="500" loading="lazy">
       </div>
       <div class="col-lg-6">
-        <h1 class="display-5 fw-bold lh-1 mb-3"><?=$car['title'];?></h1>
-        <p class="lead"><?=$car['description'];?></p>
+        <h1 class="display-5 fw-bold lh-1 mb-3"><?=$car['marque'];?></h1>
+        <p class="lead"><?=$car['modele'];?></p>
        
       </div>
     </div>
 
 <div class="row flex-lg-row-reverse align-items-center g-5 p-5">
-  <h2>Ingrédients</h2>
+  <h2>Marque</h2>
   <ul class="list-group">
-    <?php foreach ($ingredients as $key => $ingredient){?>
-      <li class="list-group-item"><?=$ingredient ;?></li>
+    <?php foreach ($marque as $key => $marque){?>
+      <li class="list-group-item"><?=$marque ;?></li>
     <?php } ?>
   </ul>
 
 </div>
 <div class="row flex-lg-row-reverse align-items-center g-5 p-5">
-  <h2>Instructions</h2>
-  <ol class="list-group list-group-numbered">
-    <?php foreach ($instructions as $key => $instruction){?>
-      <li class="list-group-item"><?=$instruction ;?></li>
+  <h2>Modèle</h2>
+  <ul class="list-group">
+    <?php foreach ($modele as $key => $modele){?>
+      <li class="list-group-item"><?=$modele ;?></li>
     <?php } ?>
-  </ol>
+  </ul>
+</div>
+<div class="row flex-lg-row-reverse align-items-center g-5 p-5">
+  <h2>Prix</h2>
+  <ul class="list-group">
+    <?php foreach ($prix as $key => $prix){?>
+      <li class="list-group-item"><?=$prix ;?></li>
+    <?php } ?>
+  </ul>
+</div>
+<div class="row flex-lg-row-reverse align-items-center g-5 p-5">
+  <h2>Année</h2>
+  <ul class="list-group">
+    <?php foreach ($annee as $key => $annee){?>
+      <li class="list-group-item"><?=$annee ;?></li>
+    <?php } ?>
+  </ul>
+</div>
+<div class="row flex-lg-row-reverse align-items-center g-5 p-5">
+  <h2>Kilomètres</h2>
+  <ul class="list-group">
+    <?php foreach ($kilometre as $key => $kilometre){?>
+      <li class="list-group-item"><?=$kilometre ;?></li>
+    <?php } ?>
+  </ul>
+</div>
+<div class="row flex-lg-row-reverse align-items-center g-5 p-5">
+  <h2>Équipements</h2>
+  <ul class="list-group">
+    <?php foreach ($equipements as $key => $equipement){?>
+      <li class="list-group-item"><?=$equipement ;?></li>
+    <?php } ?>
+  </ul>
 </div>
 
 <?php }else{ ?>

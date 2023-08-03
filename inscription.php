@@ -7,17 +7,23 @@ $errors = [];
 $messages = [];
 
 
-
-
 if(isset($_POST['addUser'])){
+    $first_name = trim($_POST['first_name']);
+    $last_name = trim($_POST['last_name']);
+    $email = trim($_POST['email']);
+    $password = $_POST['password'];
 
+    if (empty($first_name) || empty($last_name) || empty($email) || empty($password)) {
+        $errors[] = 'Tous les champs sont obligatoires.';
+    } else {
+    
     $res = addUser($pdo, $_POST['first_name'], $_POST['last_name'], $_POST['email'], $_POST['password']);
 
     if($res){
         $messages[]= 'Merci pour votre inscription';
     } else {
         $errors[]= 'Erreur s\'est produite lors de votre inscription';
-
+    }
     }
 }
 ?>
@@ -43,7 +49,7 @@ if(isset($_POST['addUser'])){
 
     <div class="mb-2 px-5">
         <label for="last_name" class="form-label">Nom</label>
-        <input type="last_name" name="last_name" id="last_name" class="form-control">
+        <input type="last_name" name="last_name"  id="last_name" class="form-control">
     </div>
 
 

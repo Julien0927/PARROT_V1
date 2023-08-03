@@ -4,7 +4,7 @@ function linesToArray(string $string){
     return explode(PHP_EOL, $string);
 }
 
-//fonction de renoomage de fichier upload
+//fonction de renommage de fichier upload
 function slugify( $text, string $divider = '-') 
 {
     //replace non letter or digits by divider
