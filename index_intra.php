@@ -1,7 +1,7 @@
 <?php
  
 
-require_once('templates/header.php');
+require_once('templates/header_intra.php');
 require_once('lib/car.php');
 
 /**if($_SESSION['user']['roles'] === 'Admin'){

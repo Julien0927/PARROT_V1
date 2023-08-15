@@ -8,5 +8,13 @@ define('_HOME_CARS_LIMIT_', 6);
         'services.php' => 'Entretien et réparations',
         'cars.php' => 'Nos voitures',
         'add_modification_car.php' => 'Ajout/Modification voitures',
-        
       ];
+
+    $visitMenu = [
+      'index.php' => 'Accueil', 
+      'services.php' => 'Entretien et réparations',
+      'cars.php' => 'Nos voitures',
+      'contact.php' => 'Contact',
+    ];
+
+    

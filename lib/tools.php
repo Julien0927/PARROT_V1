@@ -4,6 +4,8 @@ function linesToArray(string $string){
     return explode(PHP_EOL, $string);
 }
 
+
+
 //fonction de renommage de fichier upload
 function slugify( $text, string $divider = '-') 
 {

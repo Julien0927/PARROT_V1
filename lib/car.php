@@ -14,12 +14,12 @@ function getCarById(PDO $pdo, int $id){
       return _CARS_IMG_PATH_.$image;
     }
   }
-
+  // Fonction qui permet de tout récupérer soit de limiter (page d'accueil)
   function getCars(PDO $pdo, int $limit = null){
     $sql = 'SELECT * FROM cars ORDER BY id DESC';
 
     if($limit){
-      $sql = ' LIMIT :limit ';
+      $sql .= ' LIMIT :limit ';
     }
 
     $query = $pdo->prepare($sql);
@@ -46,3 +46,4 @@ function getCarById(PDO $pdo, int $id){
     
     return $query -> execute();
   }
+  

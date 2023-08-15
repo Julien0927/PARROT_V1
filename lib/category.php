@@ -1,7 +1,7 @@
 <?php
 
-/*function getUsers(PDO $pdo){
-    $sql = 'SELECT * FROM cars';
+/**function getUsers(PDO $pdo){
+    $sql = 'SELECT * FROM role';
 
     $query = $pdo->prepare($sql);
 

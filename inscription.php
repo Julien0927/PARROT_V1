@@ -26,6 +26,7 @@ if(isset($_POST['addUser'])){
     }
     }
 }
+
 ?>
 
 <h1>Inscription</h1>
@@ -41,7 +42,7 @@ if(isset($_POST['addUser'])){
     </div>
 <?php } ?>
 
-<form method="POST" enctype="multipart/form-data" >
+<form method="POST" enctype="multipart/form-data" action="<?php echo $_SERVER['PHP_SELF']?>" >
     <div class="mb-2 px-5">
         <label for="first_name" class="form-label">Prénom</label>
         <input type="first_name" name="first_name" id="first_name" class="form-control">

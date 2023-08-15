@@ -5,22 +5,29 @@ require_once('lib/user.php');
 $errors = [];
 $messages = [];
 
-
-
-
 if(isset($_POST['loginUser'])){
 
     $user = verifyUserLoginPassword($pdo, $_POST['email'], $_POST['password']);
-
+    
     if($user) {
-        $_SESSION['user'] = ['email' => $user['email']];
-        header('location: index.php');
+        $_SESSION['user'] = [
+            'email' => $user['email'],
+            'roles' => $user['roles'], 
+        ];
+        if($_SESSION['user']['roles'] === 'Admin'){
+            header('location: index_intra.php');
+        }
+        elseif($_SESSION['user']['roles'] === 'Visiteur'){
+           
+            header('location: index.php');
+        }
     } else {
-        $errors[] = 'Email ou mot de passe incorrect';
+       $errors[] = 'Email ou mot de passe incorrect';
     }
 }
 
 
+    
 ?>
 
 <h1>Connexion</h1>
@@ -36,7 +43,7 @@ if(isset($_POST['loginUser'])){
     </div>
 <?php } ?>
 
-<form method="POST" enctype="multipart/form-data" >
+<form method="POST" enctype="multipart/form-data" action="<?php echo $_SERVER['PHP_SELF']?>">
     <div class="mb-2 px-5">
         <label for="email" class="form-label">Email</label>
         <input type="email" name="email" id="email" class="form-control">

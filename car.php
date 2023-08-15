@@ -90,6 +90,7 @@ if($car) {
 <?php } ?>
 
 <?php 
+require_once ('formulaire.html');
 require_once('templates/footer.php');
 ?>
     

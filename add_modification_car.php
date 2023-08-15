@@ -2,10 +2,20 @@
 
 require_once('templates/header.php');
 
+
 if(!isset ($_SESSION['user'])){
     header('location: login.php');
- }
- 
+}
+
+/**if($_SESSION['user']['roles'] === 'Admin'){
+        
+        echo 'Acces autorisé';
+} else {
+    echo 'Acces interdit';
+}   */
+
+
+
 require_once('lib/tools.php');
 require_once('lib/car.php');
 //require_once('lib/category.php');
@@ -24,15 +34,19 @@ $car = [
     
 ];
 
-
+//$categories = getCategories($pdo);
 if(isset ($_POST['saveCar'])){
 $filename = null;
 
+//Si un fichier a été envoyé
 if (isset ($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != ''){
+
+    //La méthode getimagesize retourne false si le fichier n'est pas une image
     $checkImage = getimagesize($_FILES['file']['tmp_name']);
         if ($checkImage !== false) {
             // Si c'est une image on traite
 
+            // uniqid() évitera l'écrasement de fichier
             $fileName = uniqid().'-'.slugify($_FILES['file']['name']);
             
             move_uploaded_file($_FILES['file']['tmp_name'], _CARS_IMG_PATH_ .$fileName);
@@ -50,8 +64,8 @@ if (isset ($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != ''){
         $prix = $_POST['prix'];
         $fileName = null;
         $annee = $_POST['annee'];
-        $annee = $_POST['kilometre'];
-        $annee = $_POST['equipements'];
+        $kilometre = $_POST['kilometre'];
+        $equipements = $_POST['equipements'];
 
         if (empty($marque) || empty($modele) || empty($prix) || empty($fileName) || empty($annee) || empty($kilometre) || empty($equipements)) {
         $errors[] = 'Tous les champs sont obligatoires.';

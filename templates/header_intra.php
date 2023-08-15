@@ -34,7 +34,7 @@
       </div>
 
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 nav nav-pills">
-      <?php foreach ($visitMenu as $key => $value) { ?>
+      <?php foreach ($mainMenu as $key => $value) { ?>
           <li class="nav-item"><a href="<?=$key; ?>" class="nav-link <?php if ($currentPage === $key) { echo 'active'; } ?>"><?=$value ;?></a></li>
         <?php } ?>
       </ul>
