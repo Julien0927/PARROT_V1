@@ -28,7 +28,7 @@
 <div class="container">
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
       <div class="col-md-3 mb-2 mb-md-0">
-        <a href="index.php" class="d-inline-flex link-body-emphasis text-decoration-none">
+        <a href="index_intra.php" class="d-inline-flex link-body-emphasis text-decoration-none">
           <img src="assets/images/logo_Garage.jpg" alt="logo garage" width="250">
         </a>
       </div>
@@ -41,17 +41,9 @@
 
       <div class="col-md-3 text-end">
         <?php
-        if(!isset($_SESSION['user'])) {?>
-          <a href="login.php" class="btn btn-outline-primary me-2"> Se connecter</a>
-          <a href="inscription.php" class="btn btn-outline-primary me-2"> S'inscrire</a>
-        <?php } else { ?>
-          <a href="logout.php" class="btn btn-primary">Se déconnecter</a>
+        if(isset($_SESSION['user'])) {?>
+           <a href="logout.php" class="btn btn-primary">Se déconnecter</a>
         <?php } ?>
-        
-
-        
-        
-
         
       </div>
     </header>

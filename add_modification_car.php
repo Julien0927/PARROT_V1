@@ -1,19 +1,11 @@
 <?php
 
-require_once('templates/header.php');
+require_once('templates/header_intra.php');
 
 
 if(!isset ($_SESSION['user'])){
     header('location: login.php');
 }
-
-/**if($_SESSION['user']['roles'] === 'Admin'){
-        
-        echo 'Acces autorisé';
-} else {
-    echo 'Acces interdit';
-}   */
-
 
 
 require_once('lib/tools.php');

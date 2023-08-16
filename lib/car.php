@@ -46,4 +46,8 @@ function getCarById(PDO $pdo, int $id){
     
     return $query -> execute();
   }
+
+  function deleteCar(PDO $pdo, int $id){
+    
+  }
   

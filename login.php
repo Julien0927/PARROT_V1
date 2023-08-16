@@ -1,34 +1,9 @@
 <?php
+require_once ('lib/gestion_session.php');
 require_once('templates/header.php');
 require_once('lib/user.php');
-
-$errors = [];
-$messages = [];
-
-if(isset($_POST['loginUser'])){
-
-    $user = verifyUserLoginPassword($pdo, $_POST['email'], $_POST['password']);
-    
-    if($user) {
-        $_SESSION['user'] = [
-            'email' => $user['email'],
-            'roles' => $user['roles'], 
-        ];
-        if($_SESSION['user']['roles'] === 'Admin'){
-            header('location: index_intra.php');
-        }
-        elseif($_SESSION['user']['roles'] === 'Visiteur'){
-           
-            header('location: index.php');
-        }
-    } else {
-       $errors[] = 'Email ou mot de passe incorrect';
-    }
-}
-
-
-    
 ?>
+
 
 <h1>Connexion</h1>
 
@@ -61,4 +36,3 @@ if(isset($_POST['loginUser'])){
 <?php
 require_once('templates/footer.php');
 
-?>
