@@ -1,34 +1,28 @@
-<?php
-require_once('templates/header.php');
-require_once('lib/user.php');
-
-$errors = [];
-$messages = [];
-
-if(isset($_POST['loginUser'])){
-
-    $user = verifyUserLoginPassword($pdo, $_POST['email'], $_POST['password']);
-    
-    if($user) {
-        $_SESSION['user'] = [
-            'email' => $user['email'],
-            'roles' => $user['roles'],
-            'first_name' => $user['first_name'], 
-        ];
-        if($_SESSION['user']['roles'] === 'Admin'){
-            header('location: index_intra.php');
-        }
-        elseif($_SESSION['user']['roles'] === 'Visiteur'){
-           
-            header('location: index.php');
-        }
-        elseif($_SESSION['user']['roles'] === 'Employe'){
-           echo 'Vous etes conntecté en tant qu\'employé';
-            /**header('location: index.php');*/
-        }    
-    } else {
-        $errors[] = 'Email ou mot de passe incorrect'; 
-    }
-}
-
-?>
+<?php if(!isset($_SESSION['user'])){?>
+      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 nav nav-pills">
+      <?php foreach ($visitMenu as $key => $value) { ?>
+          <li class="nav-item"><a href="<?=$key; ?>" class="nav-link <?php if ($currentPage === $key) { echo 'active'; } ?>"><?=$value ;?></a></li>
+        <?php } ?>
+      </ul>
+      <?php } ?>
+      <?php if(isset($_SESSION['user']) && $_SESSION['user']['roles'] === 'Visiteur'){?>
+      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 nav nav-pills">
+      <?php foreach ($visitMenu as $key => $value) { ?>
+          <li class="nav-item"><a href="<?=$key; ?>" class="nav-link <?php if ($currentPage === $key) { echo 'active'; } ?>"><?=$value ;?></a></li>
+        <?php } ?>
+      </ul>
+      <?php } ?>
+      <?php if(isset($_SESSION['user']) && $_SESSION['user']['roles'] === 'Employe'){?>
+      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 nav nav-pills">
+      <?php foreach ($employeMenu as $key => $value) { ?>
+          <li class="nav-item"><a href="<?=$key; ?>" class="nav-link <?php if ($currentPage === $key) { echo 'active'; } ?>"><?=$value ;?></a></li>
+        <?php } ?>
+      </ul>
+      <?php } ?>
+      <?php if(isset($_SESSION['user']) && $_SESSION['user']['roles'] === 'Admin'){?>
+      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 nav nav-pills">
+      <?php foreach ($mainMenu as $key => $value) { ?>
+          <li class="nav-item"><a href="<?=$key; ?>" class="nav-link <?php if ($currentPage === $key) { echo 'active'; } ?>"><?=$value ;?></a></li>
+        <?php } ?>
+      </ul>
+      <?php } ?>

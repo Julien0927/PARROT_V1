@@ -50,7 +50,9 @@ if($service) {
   <div class="row text-center">
     <h1>Service introuvable</h1>
   </div>
-<?php } ?>
+<?php } 
+require_once('templates/footer.php')
+?>
 
 
     

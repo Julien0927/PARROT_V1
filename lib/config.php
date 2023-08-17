@@ -4,7 +4,7 @@ define('_ASSETS_IMG_PATH_','assets/images/');
 define('_HOME_CARS_LIMIT_', 6);
 
     $mainMenu = [
-        'index_intra.php' => 'Accueil', 
+        'index.php' => 'Accueil', 
         'inscription_employe.php' => 'Gestion des employés',
         //'services.php' => 'Entretien et réparations',
         'add_modification_service.php' => 'Ajout/Modification services',
@@ -19,12 +19,12 @@ define('_HOME_CARS_LIMIT_', 6);
       'contact.php' => 'Contact',
     ];
 
-    /**$employeMenu = [
+    $employeMenu = [
       'index.php' => 'Accueil', 
-      'services.php' => 'Entretien et réparations',
-      'cars.php' => 'Nos voitures',
-      'contact.php' => 'Contact',
+      //'services.php' => 'Entretien et réparations',
+      //'cars.php' => 'Nos voitures',
       'add_modification_car.php' => 'Ajout/Modification voitures',
-    ];*/
+      'contact.php' => 'Contact',
+    ];
 
     

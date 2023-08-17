@@ -1,5 +1,5 @@
 <?php
-require_once ('lib/gestion_session.php');
+//require_once ('lib/session.php');
 require_once('templates/header.php');
 require_once('lib/user.php');
 ?>

@@ -4,6 +4,7 @@
   require_once('lib/config.php');
   require_once('lib/pdo.php');
   
+  
 
   $currentPage = basename($_SERVER['SCRIPT_NAME']);
   
@@ -32,13 +33,9 @@
           <img src="assets/images/logo_Garage.jpg" alt="logo garage" width="250">
         </a>
       </div>
-
-      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 nav nav-pills">
-      
-      <?php foreach ($visitMenu as $key => $value) { ?>
-          <li class="nav-item"><a href="<?=$key; ?>" class="nav-link <?php if ($currentPage === $key) { echo 'active'; } ?>"><?=$value ;?></a></li>
-        <?php } ?>
-      </ul>
+      <?php 
+      require_once('lib/gestion_session.php');
+      ?>
 
       <div class="col-md-3 text-end">
         <?php
@@ -47,8 +44,9 @@
           <a href="inscription.php" class="btn btn-outline-primary me-2"> S'inscrire</a>
         <?php } else { ?>
           <a href="logout.php" class="btn btn-primary">Se déconnecter</a>
-        
         <?php } ?>
+        
+        
             
 
         

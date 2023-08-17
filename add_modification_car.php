@@ -10,7 +10,6 @@ if(!isset ($_SESSION['user'])){
 
 require_once('lib/tools.php');
 require_once('lib/car.php');
-//require_once('lib/category.php');
 
 
 
@@ -121,17 +120,6 @@ if (isset ($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != ''){
         <label for="equipements" class="form-label">Équipements et options</label>
         <textarea  name="equipements" id="equipements" cols="30" rows="" class="form-control"><?=$car['equipements'];?></textarea>
     </div>
-    <!--<div class="mb-3 p-5">
-        <label for="employe" class="form-label">Employé</label>
-        <select  name="employe" id="employe" class="form-select">
-            <?php foreach($users as $user){
-                
-                ?>
-            <option value="<?=$user['id'];?>" <?php if($car['Employe_id'] == $user['id']) {echo 'selected= "selected"';}?>><?=$user['name'];?></option>
-            <?php } ?>
-            
-        </select>
-    </div>-->
     <div class="mb-3 p-5">
         <label for="file" type="form-label">Image</label>
         <input type="file" name="file" id="file">

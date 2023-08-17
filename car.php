@@ -87,10 +87,12 @@ if($car) {
   <div class="row text-center">
     <h1>Voiture introuvable</h1>
   </div>
-<?php } ?>
 
-<?php 
-require_once ('formulaire.html');
+<?php } 
+
+
+
+require_once ('contact.php');
 require_once('templates/footer.php');
 ?>
     

@@ -47,7 +47,16 @@ function getCarById(PDO $pdo, int $id){
     return $query -> execute();
   }
 
-  function deleteCar(PDO $pdo, int $id){
+  /**Permet de récupérer le nom du véhicule pour l'afficher dans un formulaire  
+  function getCarByName(PDO $pdo, string|null $marque, string|null $modele){
+    $query = $pdo -> prepare ('SELECT * FROM cars WHERE marque = :marque AND modele = :modele');
+    $query -> bindParam(':marque', $marque, PDO::PARAM_STR);
+    $query -> bindParam(':modele', $modele, PDO::PARAM_STR);
+    $query -> execute();
+    return $query -> fetch();
+  }*/
+
+  /**function deleteCar(PDO $pdo, int $id){
     
-  }
+  }*/
   
