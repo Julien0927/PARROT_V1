@@ -1,6 +1,6 @@
 <?php
 
-require_once('templates/header_intra.php');
+require_once('templates/header.php');
 
 
 if(!isset ($_SESSION['user'])){
@@ -53,12 +53,12 @@ if (isset ($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != ''){
         $marque = $_POST['marque'];
         $modele = $_POST['modele'];
         $prix = $_POST['prix'];
-        $fileName = null;
         $annee = $_POST['annee'];
         $kilometre = $_POST['kilometre'];
         $equipements = $_POST['equipements'];
+        
 
-        if (empty($marque) || empty($modele) || empty($prix) || empty($fileName) || empty($annee) || empty($kilometre) || empty($equipements)) {
+        if (empty($marque) || empty($modele) || empty($prix) || empty($annee) || empty($kilometre) || empty($equipements)) {
         $errors[] = 'Tous les champs sont obligatoires.';
     } else {
    $res=saveCar($pdo,$_POST['marque'], $_POST['modele'], $_POST['prix'], $fileName, $_POST['annee'], $_POST['kilometre'], $_POST['equipements']);
@@ -80,6 +80,7 @@ if (isset ($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != ''){
 }
     }
 }
+
 ?>
 
 <h1>Ajouter une voiture</h1>
@@ -131,5 +132,3 @@ if (isset ($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != ''){
 require_once('templates/footer.php');
 ?>
     
-
- 

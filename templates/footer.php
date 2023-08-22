@@ -10,7 +10,11 @@
     <div class="col mb-3">
 
     </div>
+    <?php
+function openClose (){
 
+}
+?>
     <div class="col mb-3">
       <h5>Horaires d'ouvertures</h5>
       <ul class="nav flex-column">

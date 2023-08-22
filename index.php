@@ -4,6 +4,7 @@
 require_once('templates/header.php');
 require_once('lib/car.php');
 require_once('lib/service.php');
+//require_once('lib/form_car.php');
 
 /**if($_SESSION['user']['roles'] === 'Admin'){
   foreach ($mainMenu as $key => $value) { ?>
@@ -55,6 +56,7 @@ $service = getService($pdo/*, _HOME_CARS_LIMIT_*/);
           include('templates/car_partial.php');}
         ?>
     </div>
+    
       
 
       

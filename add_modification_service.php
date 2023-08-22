@@ -1,6 +1,6 @@
 <?php
 
-require_once('templates/header_intra.php');
+require_once('templates/header.php');
 
 
 if(!isset ($_SESSION['user'])){

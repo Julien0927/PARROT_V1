@@ -16,15 +16,14 @@ if(isset($_POST['addEmploye'])){
     if (empty($first_name) || empty($last_name) || empty($email) || empty($password)) {
         $errors[] = 'Tous les champs sont obligatoires.';
     } else {
-    
     $res = addEmploye($pdo, $_POST['first_name'], $_POST['last_name'], $_POST['email'], $_POST['password']);
-
     if($res){
         $messages[]= 'L\'inscription de votre collaborateur s\'est bien déroulée';
-        header ('location: index_intra.php');
+        
     } else {
         $errors[]= 'Erreur s\'est produite lors de l\inscription';
-    }
+}
+
     }
 }
 
