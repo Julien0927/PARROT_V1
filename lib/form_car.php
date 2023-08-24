@@ -38,14 +38,14 @@
     return $query->fetchAll();
   }
 
-function saveFormAuto(PDO $pdo, int $cars_id, string $firstName, string $lastName, string $email, int $phone, $message){
+function saveFormAuto(PDO $pdo, int $cars_id, string $firstName, string $lastName, string $email, string $phone, $message){
     $sql = 'INSERT INTO `formauto` (`id`, `cars_id`, `first_name`, `last_name`, `email`, `phone`, `message`) VALUES (NULL, :cars_id, :first_name, :last_name, :email, :phone, :message)';
     $query = $pdo->prepare($sql);
     $query -> bindParam(':cars_id', $cars_id, PDO::PARAM_INT);
     $query -> bindParam(':first_name', $firstName, PDO::PARAM_STR);
     $query -> bindParam(':last_name', $lastName, PDO::PARAM_STR);
     $query -> bindParam(':email', $email, PDO::PARAM_STR);
-    $query -> bindParam(':phone', $phone, PDO::PARAM_INT);
+    $query -> bindParam(':phone', $phone, PDO::PARAM_STR);
     $query -> bindParam(':message', $message, PDO::PARAM_STR);
     return $query -> execute();
   }

@@ -1,3 +1,6 @@
+<?php 
+require_once('lib/open_close.php');
+?>
 <div class="container">
   <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
     <div class="col mb-3">
@@ -11,9 +14,7 @@
 
     </div>
     <?php
-function openClose (){
 
-}
 ?>
     <div class="col mb-3">
       <h5>Horaires d'ouvertures</h5>

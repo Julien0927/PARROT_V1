@@ -6,6 +6,7 @@ define('_HOME_CARS_LIMIT_', 6);
     $mainMenu = [
         'index.php' => 'Accueil', 
         'inscription_employe.php' => 'Gestion des employés',
+        'open_close.php' => 'Gestion des horaires',
         //'services.php' => 'Entretien et réparations',
         'add_modification_service.php' => 'Ajout/Modification services',
         //'cars.php' => 'Nos voitures',

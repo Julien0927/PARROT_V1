@@ -1,36 +1,28 @@
 <?php
 require_once('templates/header.php');
 //require_once('lib/user.php');
-require_once ('lib/form_car.php');
-require_once ('lib/car.php');
+//require_once ('lib/form_car.php');
+require_once ('lib/contact.php');
+
 
 
 $id = (int) $_GET['id'];
 
-$car_id = getCarById($pdo, $id);
-$formAuto = getFormAutoById($pdo, $id);
+$contact= getContactById($pdo, $id);
 
-if ($formAuto) {
-  $car_id = $formAuto['cars_id'];
-  $marque = $formAuto['marque'];
-  $modele = $formAuto['modele'];
-  $annee = $formAuto['annee'];
-  $firstName = $formAuto['first_name'];
-  $lastName = $formAuto['last_name'];
-  $email = $formAuto['email'];
-  $phone = $formAuto['phone'];
-  $message = $formAuto['message'];
-  $image = $formAuto['image'];
+if ($contact) {
+  $firstName = $contact['first_name'];
+  $lastName = $contact['last_name'];
+  $email = $contact['email'];
+  $phone = $contact['phone'];
+  $message = $contact['message'];
 
 
 ?>
 
 <form method="POST" enctype="multipart/form-data">
     <div class="text-center">
-        <img src="<?= getFormAutoImage($image); ?>" class="d-block mx-lg-auto img-fluid" alt=""
-             width="200" height="50" loading="lazy">
-        <label for="objet" class="form-label">Message concernant le véhicule :
-            <h3> <?= $marque ?> <?= $modele ?> de <?= $annee ?> </h3></label>
+        <label for="objet" class="form-label"><h3>Demande d'informations</h3>
     </div>
 
     <div class="mb-2 px-5">

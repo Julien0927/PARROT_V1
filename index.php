@@ -4,6 +4,7 @@
 require_once('templates/header.php');
 require_once('lib/car.php');
 require_once('lib/service.php');
+require_once('lib/open_close.php');
 //require_once('lib/form_car.php');
 
 /**if($_SESSION['user']['roles'] === 'Admin'){
@@ -56,10 +57,6 @@ $service = getService($pdo/*, _HOME_CARS_LIMIT_*/);
           include('templates/car_partial.php');}
         ?>
     </div>
-    
-      
-
-      
       
     <?php
     require_once('templates/footer.php');
