@@ -1,18 +1,5 @@
 <?php
 
-/**function addMessage(PDO $pdo, string $first_name, string $last_name, string $email, string $phone, string $message){
-    $sql = "INSERT INTO `message` (`first_name`, `last_name`, `email`, `phone`, `message`) VALUES ( :first_name, :last_name, :email, :phone, :message);";
-    $query = $pdo->prepare($sql);
-
-    $query -> bindParam(':first_name', $first_name, PDO::PARAM_STR);
-    $query -> bindParam(':last_name', $last_name, PDO::PARAM_STR);
-    $query -> bindParam(':email', $email, PDO::PARAM_STR);
-    $query -> bindParam(':phone', $phone, PDO::PARAM_STR);
-    $query -> bindParam(':roles', $message, PDO::PARAM_STR);
-        
-    return $query->execute();
-}*/
-
 // Fonction qui permet de récupérer les formulaires de contact automobile par identifiant
   function getFormAutoById(PDO $pdo, int $id){
     $query = $pdo->prepare('SELECT 
@@ -37,8 +24,8 @@
     $query->execute();
     return $query->fetchAll();
   }
-
-function saveFormAuto(PDO $pdo, int $cars_id, string $firstName, string $lastName, string $email, string $phone, $message){
+  //Fonction qui permet d'insérer  et sauvegarder un véhicule en BDD
+  function saveFormAuto(PDO $pdo, int $cars_id, string $firstName, string $lastName, string $email, string $phone, $message){
     $sql = 'INSERT INTO `formauto` (`id`, `cars_id`, `first_name`, `last_name`, `email`, `phone`, `message`) VALUES (NULL, :cars_id, :first_name, :last_name, :email, :phone, :message)';
     $query = $pdo->prepare($sql);
     $query -> bindParam(':cars_id', $cars_id, PDO::PARAM_INT);
@@ -50,7 +37,7 @@ function saveFormAuto(PDO $pdo, int $cars_id, string $firstName, string $lastNam
     return $query -> execute();
   }
 
-  
+  //Fonction qui permet de récupérer l'image du formulaire
   function getFormAutoImage(string|null $image){
     if($image === null){
       return _ASSETS_IMG_PATH_.'car_default.jpg';

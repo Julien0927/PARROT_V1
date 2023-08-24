@@ -51,7 +51,7 @@
   }
 
   //Fonction qui permet de modifier un véhicule
-  function updateCar(PDO $pdo, int $carId, string $marque, string $modele, int $prix, string|null $image, int $annee, int $kilometre, string $equipements){
+  /**function updateCar(PDO $pdo, int $carId, string $marque, string $modele, int $prix, string|null $image, int $annee, int $kilometre, string $equipements){
     $sql = 'UPDATE `cars` SET `marque` = :marque, `modele` = :modele, `prix` = :prix, `image` = :image, `annee` = :annee, `kilometre` = :kilometre, `equipements` = :equipements WHERE `id` = :carId';
     $query = $pdo->prepare($sql);
 
@@ -65,7 +65,7 @@
     $query->bindParam(':carId', $carId, PDO::PARAM_INT);
     
     return $query->execute();
-}
+}*/
 
   //Fonction qui permet de supprimer un véhicule(vendu par exemple)
   /**function deleteCar(PDO $pdo, int $carId) {

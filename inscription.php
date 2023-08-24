@@ -45,12 +45,12 @@ if(isset($_POST['addUser'])){
 <form method="POST" enctype="multipart/form-data" action="<?php echo $_SERVER['PHP_SELF']?>" >
     <div class="mb-2 px-5">
         <label for="first_name" class="form-label">Prénom</label>
-        <input type="first_name" name="first_name" id="first_name" class="form-control">
+        <input type="text" name="first_name" id="first_name" class="form-control">
     </div>
 
     <div class="mb-2 px-5">
         <label for="last_name" class="form-label">Nom</label>
-        <input type="last_name" name="last_name"  id="last_name" class="form-control">
+        <input type="text" name="last_name"  id="last_name" class="form-control">
     </div>
 
 
