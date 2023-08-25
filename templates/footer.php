@@ -13,19 +13,16 @@ require_once('lib/open_close.php');
     <div class="col mb-3">
 
     </div>
-    <?php
-
-?>
     <div class="col mb-3">
       <h5>Horaires d'ouvertures</h5>
       <ul class="nav flex-column">
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">lundi : 8h45-12h00 / 14h00-18h00</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">mardi : 8h45-12h00 / 14h00-18h00</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">mercredi : 8h45-12h00 / 14h00-18h00</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">jeudi : 8h45-12h00 / 14h00-18h00</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">vendredi : 8h45-12h00 / 14h00-18h00</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">samedi : 8h45-12h00</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">dimanche : fermé</a></li>
+      <?php foreach ($openDays as $open){ ?>
+          <li class="nav-item mb-2">
+            <a href="#" class="nav-link p-0 text-body-secondary">
+              <?= $open['day']; ?> : <?= $open['morning_hours']; ?> / <?= $open['afternoon_hours']; ?>
+            </a>
+          </li>
+        <?php }; ?>      
       </ul>
     </div>
 

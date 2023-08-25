@@ -9,7 +9,6 @@ $id =(int) $_GET['id'];
 
 $car = getCarById($pdo, $id);
 
-
 if($car) {
   
   
