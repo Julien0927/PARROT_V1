@@ -5,7 +5,8 @@ require_once('templates/header.php');
 require_once('lib/car.php');
 require_once('lib/service.php');
 require_once('lib/open_close.php');
-//require_once('lib/form_car.php');
+require_once('lib/temoignage.php');
+
 
 /**if($_SESSION['user']['roles'] === 'Admin'){
   foreach ($mainMenu as $key => $value) { ?>
@@ -15,6 +16,7 @@ require_once('lib/open_close.php');
 
 $cars = getCars($pdo/*, _HOME_CARS_LIMIT_*/);
 $service = getService($pdo/*, _HOME_CARS_LIMIT_*/);
+$testimony = getTemoignage($pdo, );
 
 ?>
   <?php 
@@ -28,9 +30,23 @@ $service = getService($pdo/*, _HOME_CARS_LIMIT_*/);
     
 
   <div class="row flex-lg-row-reverse align-items-center g-5 py-5 ">
-      <div class="col-10 col-sm-8 col-lg-5">
-        <img src="assets/images/logo_Garage.jpg" class="d-block mx-lg-auto img-fluid" alt="Logo garage" width="350" loading="lazy">
-      </div>
+      <div class="mb-5 col-10 col-sm-8 col-lg-5">
+      <h2 class="text-center ">Témoignages</h2>
+    <div class="testimonial-container">
+        <?php 
+        $testimonies = getApprovedTestimony($pdo, _HOME_COMMENT_LIMIT_);?>
+        <div class="testimonial-carousel">
+        <?php foreach ($testimonies as $key => $testimony) { ?>
+            <div class="testimonial">
+                <div class="card-body">
+                    <h5 class="card-title"><?= $testimony['name']; ?></h5>
+                    <p class="card-text"><?= $testimony['comment']; ?></p>
+                </div>
+            </div>              
+        <?php } ;?>
+        </div>
+    </div>
+  </div>
       <div class="col-lg-6">
         <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">GARAGE Vincent PARROT</h1>
         <p class="lead">Fort de 15 ans d'expérience, Vincent Parrot a ouvert les portes de son propre garage en 2021. 
@@ -50,6 +66,7 @@ $service = getService($pdo/*, _HOME_CARS_LIMIT_*/);
           include('templates/service_partial.php');}
         ?>
     </div>
+    
     <div class="row p-5">
       <h1>Nos véhicules d'occasion</h1>
         <?php 

@@ -2,6 +2,7 @@
 define('_CARS_IMG_PATH_','uploads/cars/');
 define('_ASSETS_IMG_PATH_','assets/images/');
 define('_HOME_CARS_LIMIT_', 6);
+define('_HOME_COMMENT_LIMIT_', 4);
 
     $mainMenu = [
         'index.php' => 'Accueil', 
@@ -17,6 +18,7 @@ define('_HOME_CARS_LIMIT_', 6);
       'index.php' => 'Accueil', 
       'services.php' => 'Entretien et réparations',
       'cars.php' => 'Nos voitures',
+      'add_temoignage.php' => 'Témoignages',
       'contact.php' => 'Contact',
     ];
 
@@ -25,6 +27,7 @@ define('_HOME_CARS_LIMIT_', 6);
       //'services.php' => 'Entretien et réparations',
       //'cars.php' => 'Nos voitures',
       'add_modification_car.php' => 'Ajout/Modification voitures',
+      'approved_temoignage.php' => 'Témoignages',
       'form_auto_index.php' => 'Contact',
     ];
 

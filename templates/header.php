@@ -45,14 +45,6 @@
         <?php } else { ?>
           <a href="logout.php" class="btn btn-primary">Se déconnecter</a>
         <?php } ?>
-        
-        
-            
-
-        
-        
-
-        
       </div>
     </header>
   </div>

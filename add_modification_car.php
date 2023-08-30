@@ -97,27 +97,22 @@ if (isset ($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != ''){
 <?php } ?>
 
 <form method="POST" enctype="multipart/form-data" >
-    <div class="mb-2 px-5">
+    <div class="col-lg-4 col-md-8 col-sm-12 mb-2 px-5">
         <label for="marque" class="form-label">Marque</label>
         <input type="text" name="marque" id="marque" class="form-control" value="<?=$car['marque'];?>">
-    </div>
-    <div class="mb-3 px-5">
+        
         <label for="modele" class="form-label">Modèle</label>
         <input type="text"  name="modele" id="modele" class="form-control" value="<?=$car['modele'];?>">
-    </div>
-    <div class="mb-3 px-5">
+        
         <label for="prix" class="form-label">Prix</label>
         <input type="text"  name="prix" id="prix" class="form-control" value="<?=$car['prix'];?>">
-    </div>
-    <div class="mb-3 px-5">
+        
         <label for="annee" class="form-label">Année</label>
         <input type="text"  name="annee" id="annee" class="form-control" value="<?=$car['annee'];?>">
-    </div>
-    <div class="mb-3 px-5">
+        
         <label for="kilometre" class="form-label">Kilomètres</label>
         <input type="text"  name="kilometre" id="kilometre" class="form-control" value="<?=$car['kilometre'];?>">
-    </div>
-    <div class="mb-3 px-5">
+        
         <label for="equipements" class="form-label">Équipements et options</label>
         <textarea  name="equipements" id="equipements" cols="30" rows="" class="form-control"><?=$car['equipements'];?></textarea>
     </div>
@@ -125,7 +120,7 @@ if (isset ($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != ''){
         <label for="file" type="form-label">Image</label>
         <input type="file" name="file" id="file">
     </div>
-    <input type="submit" value="enregistrer" name="saveCar" class="btn btn-primary">
+    <input type="submit" value="enregistrer" name="saveCar" class="btn btn-primary px-5 mx-5">
 </form>
 
 <?php 

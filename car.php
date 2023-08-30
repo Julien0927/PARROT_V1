@@ -32,48 +32,37 @@ if($car) {
       </div>
     </div>
 
-<div class="row flex-lg-row-reverse align-items-center g-5 p-5">
+<div class="row flex-lg-row-reverse align-items-center g-5 p-5  col-lg-4 col-md-8 col-sm-12">
   <h2>Marque</h2>
   <ul class="list-group">
     <?php foreach ($marque as $key => $marque){?>
       <li class="list-group-item"><?=$marque ;?></li>
     <?php } ?>
   </ul>
-
-</div>
-<div class="row flex-lg-row-reverse align-items-center g-5 p-5">
   <h2>Modèle</h2>
   <ul class="list-group">
     <?php foreach ($modele as $key => $modele){?>
       <li class="list-group-item"><?=$modele ;?></li>
     <?php } ?>
   </ul>
-</div>
-<div class="row flex-lg-row-reverse align-items-center g-5 p-5">
   <h2>Prix</h2>
   <ul class="list-group">
     <?php foreach ($prix as $key => $prix){?>
       <li class="list-group-item"><?=$prix ;?></li>
     <?php } ?>
   </ul>
-</div>
-<div class="row flex-lg-row-reverse align-items-center g-5 p-5">
   <h2>Année</h2>
   <ul class="list-group">
     <?php foreach ($annee as $key => $annee){?>
       <li class="list-group-item"><?=$annee ;?></li>
     <?php } ?>
   </ul>
-</div>
-<div class="row flex-lg-row-reverse align-items-center g-5 p-5">
   <h2>Kilomètres</h2>
   <ul class="list-group">
     <?php foreach ($kilometre as $key => $kilometre){?>
       <li class="list-group-item"><?=$kilometre ;?></li>
     <?php } ?>
   </ul>
-</div>
-<div class="row flex-lg-row-reverse align-items-center g-5 p-5">
   <h2>Équipements</h2>
   <ul class="list-group">
     <?php foreach ($equipements as $key => $equipement){?>
