@@ -2,6 +2,21 @@
 require_once('templates/header.php');
 require_once('lib/open_close.php');
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['modifyHours'])) {
+        $id = $_POST['day_id'];
+        $newMorningHours = $_POST['morning_hours'];
+        $newAfternoonHours = $_POST['afternoon_hours'];
+        
+        $res = updateOpeningHours($pdo, $id, $newMorningHours, $newAfternoonHours);
+        if ($res) {
+            $messages[] = 'Les horaires ont bien été modifiés';
+        } else {
+            $errors[] = 'Les horaires n\'ont pas été modifiés';
+        }
+    }
+  }
+  $openDays = getAllOpenDays($pdo);
 ?>
 
 <?php foreach ($openDays as $open){ ?>

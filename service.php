@@ -10,6 +10,7 @@ $id =(int) $_GET['id'];
 $service = getServiceById($pdo, $id);
 
 
+
 if($service) {
   
   
@@ -19,7 +20,7 @@ if($service) {
 
 <div class="row flex-lg-row-reverse align-items-center g-2 p-5">
       <div class="col-10 col-sm-8 col-lg-6 ">
-        <img src="<?=getServiceImage($service['image']);?>" class="d-block mx-lg-auto img-fluid" alt="<?=$car['marque']?>" width="500" height="350" loading="lazy">
+        <img src="<?=getServiceImage($service['image']);?>" class="d-block mx-lg-auto img-fluid" alt="" width="500" height="350" loading="lazy">
       </div>
       <div class="col-lg-6">
         <h1 class="display-5 fw-bold lh-1 mb-1"><?=$service['name'];?></h1>

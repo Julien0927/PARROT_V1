@@ -18,7 +18,6 @@ $service = [
     'description' =>'',
 ];
 
-//$categories = getCategories($pdo);
 if(isset ($_POST['saveService'])){
 $filename = null;
 
@@ -94,6 +93,51 @@ if (isset ($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != ''){
     </div>
     <input type="submit" value="enregistrer" name="saveService" class="btn btn-primary">
 </form>
+
+<h1>Modifier une prestation</h1>
+
+<?php 
+$updateService = getService($pdo/*, _HOME_CARS_LIMIT_*/);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['updateService'])) {
+        $id = $_POST['id'];
+        $newName = $_POST['name'];
+        $newDescription = $_POST['description'];
+        
+        $res = updateService($pdo, $id, $newName, $newDescription);
+        if ($res) {
+            $messages[] = 'Le service bien été modifié';
+        } else {
+            $errors[] = 'Le service n\'a pas été modifié';
+        }
+    }
+  }
+?>
+
+<?php foreach ($updateService as $updateService){ ?>
+    <article class="mt-3 col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title"><?= $updateService['name']; ?></h5>
+                <p class="card-text"><?= $updateService['description']; ?></p>
+                <form method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="id" value="<?= $updateService['id']; ?>">
+                    <div class="mb-2 px-5">
+                        <label for="name" class="form-label">Prestation</label>
+                        <input type="text" name="name" id="name" class="form-control" value="<?= $updateService['name']; ?>">
+                    </div>
+                    <div class="mb-3 px-5">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea type="text" name="description" id="description" class="form-control" value="<?= $updateService['description']; ?>"cols="30" rows="5"></textarea>
+                    </div>
+                    <input type="submit" value="Modifier" name="updateService" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+    </article>
+<?php };
+?>
+
 
 <?php 
 require_once('templates/footer.php');
