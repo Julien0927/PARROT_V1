@@ -46,7 +46,7 @@ if(isset($_POST['saveContact'])){
     </div>
 <?php } ?>
 
-<form method="POST" enctype="multipart/form-data"  >
+<form action="<?= $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data"  >
     <div class="mb-2 px-5">
         <label for="first_name" class="form-label">Prénom</label>
         <input type="first_name" name="first_name" id="first_name" class="form-control">

@@ -24,6 +24,7 @@ if($car) {
 <div class="row flex-lg-row-reverse align-items-center g-5 p-5">
       <div class="col-10 col-sm-8 col-lg-6">
         <img src="<?=getCarImage($car['image']);?>" class="d-block mx-lg-auto img-fluid" alt="<?=$car['marque']?>" width="500" height="350" loading="lazy">
+        <!--<img src="<?=getCarImage($car['image']);?>" class="d-block mx-lg-auto img-fluid" alt="<?=$car['marque']?>" width="500" height="350" loading="lazy">-->
       </div>
       <div class="col-lg-6">
         <h1 class="display-5 fw-bold lh-1 mb-3"><?=$car['marque'];?></h1>

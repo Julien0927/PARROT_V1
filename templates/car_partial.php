@@ -1,6 +1,6 @@
 <article class="mt-2 col-md-4">
     <div class="card ">
-        <img src="<?=getCarImage($car['image']); ?>" class="card-img-top" alt="image automobile">
+        <img src="<?=getCarImage($car['image_filename']); ?>" class="card-img-top" alt="image automobile">
           <div class="card-body">
             <h5 class="card-title"><?=$car['marque']; ?></h5>
             <p class="card-text"><?=$car['modele']; ?> mise en circulation : <?=$car['annee']; ?> </p>

@@ -24,30 +24,29 @@ $car = [
     'equipements' =>'',
     
 ];
-
 //$categories = getCategories($pdo);
 if(isset ($_POST['saveCar'])){
-$filename = null;
-
-//Si un fichier a été envoyé
-if (isset ($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != ''){
-
-    //La méthode getimagesize retourne false si le fichier n'est pas une image
-    $checkImage = getimagesize($_FILES['file']['tmp_name']);
-        if ($checkImage !== false) {
-            // Si c'est une image on traite
-
-            // uniqid() évitera l'écrasement de fichier
-            $fileName = uniqid().'-'.slugify($_FILES['file']['name']);
-            
-            move_uploaded_file($_FILES['file']['tmp_name'], _CARS_IMG_PATH_ .$fileName);
-
-        } else {
-            // Sinon on affiche un message erreur
-            $errors[] = 'Le fichier doit être une image';
-        }
-
-}
+    $filename = null;
+    
+    //Si un fichier a été envoyé
+    if (isset ($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != ''){
+    
+        //La méthode getimagesize retourne false si le fichier n'est pas une image
+        $checkImage = getimagesize($_FILES['file']['tmp_name']);
+            if ($checkImage !== false) {
+                // Si c'est une image on traite
+    
+                // uniqid() évitera l'écrasement de fichier
+                $fileName = uniqid().'-'.slugify($_FILES['file']['name']);
+                
+                move_uploaded_file($_FILES['file']['tmp_name'], _CARS_IMG_PATH_ .$fileName);
+    
+            } else {
+                // Sinon on affiche un message erreur
+                $errors[] = 'Le fichier doit être une image';
+            }
+    
+    }
 
     if(isset($_POST['saveCar'])){
         $marque = $_POST['marque'];

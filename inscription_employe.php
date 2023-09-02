@@ -42,7 +42,7 @@ if(isset($_POST['addEmploye'])){
     </div>
 <?php } ?>
 
-<form method="POST" enctype="multipart/form-data" action="<?php echo $_SERVER['PHP_SELF']?>" >
+<form method="POST" enctype="multipart/form-data" action="<?= $_SERVER['PHP_SELF']?>" >
     <div class="mb-2 px-5">
         <label for="first_name" class="form-label">Prénom</label>
         <input type="first_name" name="first_name" id="first_name" class="form-control">

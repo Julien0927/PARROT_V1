@@ -23,6 +23,7 @@ $cars = getCars($pdo);
 <?php
 require_once('templates/footer.php');
 ?>
+<script src="assets/js/script.js"></script>
 
     
 

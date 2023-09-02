@@ -9,7 +9,6 @@ $testimony = getTemoignage($pdo);
 foreach($testimony as $key => $testimony){
     $isApproved = $testimony['approved'] == 1;
 ?>
-<div class="row">
     <article class="mt-3 col-lg-4 ">
         <div class="card ">
           <div class="card-body">
@@ -25,7 +24,6 @@ foreach($testimony as $key => $testimony){
           </div>
         </div>
     </article>
-</div>
 <?php
 foreach($testimony as $testimony){
 if (isset($_POST['deleteTemoignage'])){
@@ -38,7 +36,6 @@ if (isset($_POST['deleteTemoignage'])){
     approveTemoignage($pdo, $temoignages_id);
     header('location: approved_temoignage.php');
      }?>                 
-
      
 <?php } 
 }

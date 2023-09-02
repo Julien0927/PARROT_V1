@@ -35,20 +35,37 @@
     return $query->fetchAll();
   }
 
-  function saveCar(PDO $pdo, string $marque, string $modele, int $prix, string|null $image, int $annee, int $kilometre, string $equipements){
-    $sql = 'INSERT INTO `cars` (`id`, `marque`, `modele`, `prix`, `image`, `annee`, `kilometre`, `equipements`) VALUES (NULL, :marque, :modele, :prix, :image, :annee, :kilometre, :equipements)';
+  function saveCar(PDO $pdo, string $marque, string $modele, int $prix, string|null $image, int $annee, int $kilometre, string $equipements) {
+    $sql = 'INSERT INTO `cars` (`id`, `marque`, `modele`, `prix`, `image_filename`, `annee`, `kilometre`, `equipements`) VALUES (NULL, :marque, :modele, :prix, :image_filename, :annee, :kilometre, :equipements)';
     $query = $pdo->prepare($sql);
 
-    $query -> bindParam(':marque', $marque, PDO::PARAM_STR);
-    $query -> bindParam(':modele', $modele, PDO::PARAM_STR);
-    $query -> bindParam(':prix', $prix, PDO::PARAM_INT);
-    $query -> bindParam(':image', $image, PDO::PARAM_STR);
-    $query -> bindParam(':annee', $annee, PDO::PARAM_INT);
-    $query -> bindParam(':kilometre', $kilometre, PDO::PARAM_INT);
-    $query -> bindParam(':equipements', $equipements, PDO::PARAM_STR);
-    
+    $query->bindParam(':marque', $marque, PDO::PARAM_STR);
+    $query->bindParam(':modele', $modele, PDO::PARAM_STR);
+    $query->bindParam(':image_filename', $image, PDO::PARAM_STR);
+    $query->bindParam(':prix', $prix, PDO::PARAM_INT);
+    $query->bindParam(':annee', $annee, PDO::PARAM_INT);
+    $query->bindParam(':kilometre', $kilometre, PDO::PARAM_INT);
+    $query->bindParam(':equipements', $equipements, PDO::PARAM_STR);
+
     return $query -> execute();
   }
+
+    /**function addMorePhoto(){
+            $imageSql = 'INSERT INTO `car_images` (`car_id`, `_CARS_IMG_PATH_`) VALUES (:car_id, :_CARS_IMG_PATH_)';
+            $imageQuery = $pdo->prepare($imageSql);
+            $imageQuery->bindParam(':car_id', $carId, PDO::PARAM_INT);
+
+            foreach ($images as $image) {
+                $imageQuery->bindParam(':_CARS_IMG_PATH_', $image, PDO::PARAM_STR);
+                $imageQuery->execute();
+            }
+        }
+        return true;
+    } else {
+        return false;
+    }
+
+
 
   //Fonction qui permet de modifier un véhicule
   /**function updateCar(PDO $pdo, int $carId, string $marque, string $modele, int $prix, string|null $image, int $annee, int $kilometre, string $equipements){

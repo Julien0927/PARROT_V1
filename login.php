@@ -18,7 +18,7 @@ require_once('lib/user.php');
     </div>
 <?php } ?>
 
-<form method="POST" enctype="multipart/form-data" action="<?php echo $_SERVER['PHP_SELF']?>">
+<form method="POST" enctype="multipart/form-data" action="<?= $_SERVER['PHP_SELF']?>">
     <div class="col-lg-4 col-md-8 col-sm-12 mb-2 px-5">
         <label for="email" class="form-label">Email</label>
         <input type="email" name="email" id="email" class="form-control">

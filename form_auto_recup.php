@@ -25,7 +25,7 @@ if ($formAuto) {
 
 ?>
 
-<form method="POST" enctype="multipart/form-data">
+<form action="<?= $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
     <div class="text-center">
         <img src="<?= getFormAutoImage($image); ?>" class="d-block mx-lg-auto img-fluid" alt=""
              width="200" height="50" loading="lazy">

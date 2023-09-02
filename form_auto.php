@@ -48,7 +48,7 @@ if(isset($_POST['saveFormAuto'])){
     </div>
 <?php } ?>
 
-<form method="POST" enctype="multipart/form-data"  >
+<form action="<?= $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data"  >
     <div class="text-center">
         <label for="objet" class="form-label">Message concernant le véhicule :<h3> <?=$car['marque']?> <?=$car['modele']?> de <?=$car['annee']?></h3> </label>
         

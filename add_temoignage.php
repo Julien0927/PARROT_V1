@@ -72,7 +72,7 @@ $comment = [
 
     </form> 
     <?php } else { ?>
-    <form method="POST" enctype="multipart/form-data" >
+    <form action="<?= $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data" >
         <div class="mb-2 px-5">
             <label for="name" class="form-label">Votre nom</label>
             <input type="text" name="name" id="name" class="form-control" value="<?=$comment['name'];?>">

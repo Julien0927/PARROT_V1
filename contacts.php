@@ -20,7 +20,7 @@ if ($contact) {
 
 ?>
 
-<form method="POST" enctype="multipart/form-data">
+<form action="<?= $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
     <div class="text-center">
         <label for="objet" class="form-label"><h3>Demande d'informations</h3>
     </div>
