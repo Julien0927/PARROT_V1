@@ -2,15 +2,12 @@
 
 require_once('templates/header.php');
 
-
 if(!isset ($_SESSION['user'])){
     header('location: login.php');
 }
 
-
 require_once('lib/tools.php');
 require_once('lib/car.php');
-
 
 
 $errors = [];
@@ -25,27 +22,20 @@ $car = [
     
 ];
 //$categories = getCategories($pdo);
-if(isset ($_POST['saveCar'])){
-    $filename = null;
-    
-    //Si un fichier a été envoyé
-    if (isset ($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != ''){
-    
-        //La méthode getimagesize retourne false si le fichier n'est pas une image
-        $checkImage = getimagesize($_FILES['file']['tmp_name']);
+if (isset($_POST['saveCar'])) {
+    $filenames = [];
+
+    if (!empty($_FILES['file']['tmp_name'][0])) {
+        foreach ($_FILES['file']['tmp_name'] as $index => $tmpName) {
+            $checkImage = getimagesize($tmpName);
             if ($checkImage !== false) {
-                // Si c'est une image on traite
-    
-                // uniqid() évitera l'écrasement de fichier
-                $fileName = uniqid().'-'.slugify($_FILES['file']['name']);
-                
-                move_uploaded_file($_FILES['file']['tmp_name'], _CARS_IMG_PATH_ .$fileName);
-    
+                $fileName = uniqid() . '-' . slugify($_FILES['file']['name'][$index]);
+                move_uploaded_file($tmpName, _CARS_IMG_PATH_ . $fileName);
+                $filenames[] = $fileName;
             } else {
-                // Sinon on affiche un message erreur
-                $errors[] = 'Le fichier doit être une image';
+                $errors[] = 'Le fichier ' . $_FILES['file']['name'][$index] . ' doit être une image';
             }
-    
+        }
     }
 
     if(isset($_POST['saveCar'])){
@@ -60,7 +50,7 @@ if(isset ($_POST['saveCar'])){
         if (empty($marque) || empty($modele) || empty($prix) || empty($annee) || empty($kilometre) || empty($equipements)) {
         $errors[] = 'Tous les champs sont obligatoires.';
     } else {
-   $res=saveCar($pdo,$_POST['marque'], $_POST['modele'], $_POST['prix'], $fileName, $_POST['annee'], $_POST['kilometre'], $_POST['equipements']);
+   $res=saveCar($pdo,$_POST['marque'], $_POST['modele'], $_POST['prix'], $filenames, $_POST['annee'], $_POST['kilometre'], $_POST['equipements']);
     if($res){
         $messages[] = 'La voiture a bien été enregistrée';
     } else {
@@ -116,13 +106,13 @@ if(isset ($_POST['saveCar'])){
         <textarea  name="equipements" id="equipements" cols="30" rows="" class="form-control"><?=$car['equipements'];?></textarea>
     </div>
     <div class="mb-3 p-5">
-        <label for="file" type="form-label">Image</label>
-        <input type="file" name="file" id="file">
+        <label for="file" type="form-label">Images</label>
+        <input type="file" name="file[]" multiple id="file">
     </div>
     <input type="submit" value="enregistrer" name="saveCar" class="btn btn-primary px-5 mx-5">
+    
 </form>
 
 <?php 
 require_once('templates/footer.php');
 ?>
-    

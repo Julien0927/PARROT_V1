@@ -11,7 +11,7 @@ define('_HOME_COMMENT_LIMIT_', 4);
         //'services.php' => 'Entretien et réparations',
         'add_modification_service.php' => 'Ajout/Modification services',
         //'cars.php' => 'Nos voitures',
-        'add_modification_car.php' => 'Ajout/Modification voitures',
+        'add_modification_car.php' => 'Ajout/Suppression voitures',
       ];
 
     $visitMenu = [
@@ -26,7 +26,7 @@ define('_HOME_COMMENT_LIMIT_', 4);
       'index.php' => 'Accueil', 
       //'services.php' => 'Entretien et réparations',
       //'cars.php' => 'Nos voitures',
-      'add_modification_car.php' => 'Ajout/Modification voitures',
+      'add_modification_car.php' => 'Ajout/Suppression voitures',
       'approved_temoignage.php' => 'Témoignages',
       'form_auto_index.php' => 'Contact',
     ];
