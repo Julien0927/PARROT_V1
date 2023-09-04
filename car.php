@@ -20,6 +20,7 @@ if($car) {
   
 ?>
 
+
 <div class="row flex-lg-row-reverse align-items-center g-5 p-5">
       <div class="col-10 col-sm-8 col-lg-6">
       <?php foreach ($images as $image) { ?>
@@ -32,6 +33,7 @@ if($car) {
        
       </div>
     </div>
+    
 
 <div class="row flex-lg-row-reverse align-items-center g-5 p-5  col-lg-4 col-md-8 col-sm-12">
   <h2>Marque</h2>
@@ -71,6 +73,7 @@ if($car) {
     <?php } ?>
   </ul>
 </div>
+
 
 <?php }else{ ?>
   <div class="row text-center">

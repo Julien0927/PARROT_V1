@@ -11,7 +11,7 @@
   //Fonction qui permet de récupérer l'image d'un véhicule
   function getCarImage(string|null $image){
     if($image === null){
-      return _CARS_IMG_PATH_.$image;
+      return _ASSETS_IMG_PATH_.'car_default.jpg';
     } else {
       return _CARS_IMG_PATH_.$image;
     }

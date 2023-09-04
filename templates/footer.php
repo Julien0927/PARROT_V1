@@ -42,6 +42,5 @@ require_once('lib/open_close.php');
   </footer>
 </div>
 
-    
 </body>
 </html>
