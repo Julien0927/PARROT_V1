@@ -32,7 +32,7 @@ if (isset ($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != ''){
             // uniqid() évitera l'écrasement de fichier
             $fileName = uniqid().'-'.slugify($_FILES['file']['name']);
             
-            move_uploaded_file($_FILES['file']['tmp_name'], _CARS_IMG_PATH_ .$fileName);
+            move_uploaded_file($_FILES['file']['tmp_name'], _REPAR_IMG_PATH_ .$fileName);
 
         } else {
             // Sinon on affiche un message erreur

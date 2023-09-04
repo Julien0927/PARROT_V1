@@ -16,7 +16,9 @@ require_once('lib/open_close.php');
     <div class="col mb-3">
       <h5>Horaires d'ouvertures</h5>
       <ul class="nav flex-column">
-      <?php foreach ($openDays as $open){ ?>
+      <?php
+      $openDays = getAllOpenDays($pdo);
+       foreach ($openDays as $open){ ?>
           <li class="nav-item mb-2">
             <a href="#" class="nav-link p-0 text-body-secondary">
               <?= $open['day']; ?> : <?= $open['morning_hours']; ?> / <?= $open['afternoon_hours']; ?>

@@ -1,5 +1,6 @@
 <?php
 define('_CARS_IMG_PATH_','uploads/cars/');
+define('_REPAR_IMG_PATH_','uploads/Entretien_reparations');
 define('_ASSETS_IMG_PATH_','assets/images/');
 define('_HOME_CARS_LIMIT_', 6);
 define('_HOME_COMMENT_LIMIT_', 4);

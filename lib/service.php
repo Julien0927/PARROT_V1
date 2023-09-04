@@ -12,7 +12,7 @@
     if($image === null){
       return _ASSETS_IMG_PATH_.'car_default.jpg';
     } else {
-      return _CARS_IMG_PATH_.$image;
+      return _REPAR_IMG_PATH_.$image;
     }
   }
   // Fonction qui permet de tout récupérer 
