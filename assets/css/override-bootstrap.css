@@ -122,7 +122,26 @@ h2, h3 {
         opacity: 0.4;   
     }
 }
-
-
-
-
+.flexbox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: stretch;
+    box-sizing: border-box;
+    margin: 0px -10px;
+  }
+  
+  .item {
+    box-sizing: border-box;
+    min-width: 200px;
+    margin: 10px;
+  }
+  
+  .content {
+    align-items: center;
+    box-sizing: border-box;
+    height: 100%;
+    padding: 3px;
+  }
+  

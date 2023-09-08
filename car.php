@@ -20,58 +20,74 @@ if($car) {
   
 ?>
 
+<!--<div class="row flex-lg-row-reverse align-items-center g-5 p-5">-->
+  <!--<div class="col-10 col-sm-8 col-lg-6">-->
+      <div class="flexbox">
+        <?php foreach ($images as $image) { ?>
+          <div class="item">
+            <div class="content">
+              <img src="<?=_CARS_IMG_PATH_.$image['image_filename'];?>" class="d-block mx-lg-auto img-fluid" alt="<?=$car['marque']?>" width="350" height="250" loading="lazy">
+            </div>
+          </div>
+        <?php } ?>
+      </div>
+<!--</div>-->
 
-<div class="row flex-lg-row-reverse align-items-center g-5 p-5">
-      <div class="col-10 col-sm-8 col-lg-6">
-      <?php foreach ($images as $image) { ?>
-        <img src="<?=_CARS_IMG_PATH_.$image['image_filename'];?>" class="d-block mx-lg-auto img-fluid" alt="<?=$car['marque']?>" width="350" height="250" loading="lazy">
-      <?php } ?>
-      </div>
-      <div class="col-lg-6">
-        <h1 class="display-5 fw-bold lh-1 mb-3"><?=$car['marque'];?></h1>
-        <p class="lead"><?=$car['modele'];?></p>
-       
-      </div>
+<div class="container text-center mt-5">
+  <div class="row align-items-center">
+    <div class="col">
+      <h2>Marque</h2>
+        <ul class="list-group">
+          <?php foreach ($marque as $key => $marque){?>
+            <li class="list-group-item"><?=$marque ;?></li>
+          <?php } ?>
+        </ul>
     </div>
-    
-
-<div class="row flex-lg-row-reverse align-items-center g-5 p-5  col-lg-4 col-md-8 col-sm-12">
-  <h2>Marque</h2>
-  <ul class="list-group">
-    <?php foreach ($marque as $key => $marque){?>
-      <li class="list-group-item"><?=$marque ;?></li>
-    <?php } ?>
-  </ul>
-  <h2>Modèle</h2>
-  <ul class="list-group">
-    <?php foreach ($modele as $key => $modele){?>
-      <li class="list-group-item"><?=$modele ;?></li>
-    <?php } ?>
-  </ul>
-  <h2>Prix</h2>
-  <ul class="list-group">
-    <?php foreach ($prix as $key => $prix){?>
-      <li class="list-group-item"><?=$prix ;?></li>
-    <?php } ?>
-  </ul>
-  <h2>Année</h2>
-  <ul class="list-group">
-    <?php foreach ($annee as $key => $annee){?>
-      <li class="list-group-item"><?=$annee ;?></li>
-    <?php } ?>
-  </ul>
-  <h2>Kilomètres</h2>
-  <ul class="list-group">
-    <?php foreach ($kilometre as $key => $kilometre){?>
-      <li class="list-group-item"><?=$kilometre ;?></li>
-    <?php } ?>
-  </ul>
-  <h2>Équipements</h2>
-  <ul class="list-group">
-    <?php foreach ($equipements as $key => $equipement){?>
-      <li class="list-group-item"><?=$equipement ;?></li>
-    <?php } ?>
-  </ul>
+    <div class="col">
+      <h2>Modèle</h2>
+        <ul class="list-group">
+          <?php foreach ($modele as $key => $modele){?>
+           <li class="list-group-item"><?=$modele ;?></li>
+          <?php } ?>
+        </ul>
+    </div>
+    <div class="col">
+      <h2>Prix</h2>
+        <ul class="list-group">
+          <?php foreach ($prix as $key => $prix){?>
+            <li class="list-group-item"><?=$prix ;?> €</li>
+          <?php } ?>
+        </ul>
+    </div>
+  </div>
+</div>
+<div class="container text-center">
+  <div class="row align-items-center">
+    <div class="col">
+      <h2>Année</h2>
+        <ul class="list-group">
+          <?php foreach ($annee as $key => $annee){?>
+            <li class="list-group-item"><?=$annee ;?></li>
+          <?php } ?>
+        </ul>
+    </div>
+    <div class="col">
+      <h2>Kilomètres</h2>
+        <ul class="list-group">
+          <?php foreach ($kilometre as $key => $kilometre){?>
+            <li class="list-group-item"><?=$kilometre ;?> Km</li>
+          <?php } ?>
+        </ul>
+    </div>
+    <div class="col">
+      <h2>Équipements</h2>
+        <ul class="list-group">
+          <?php foreach ($equipements as $key => $equipement){?>
+            <li class="list-group-item"><?=$equipement ;?></li>
+          <?php } ?>
+        </ul>
+    </div>
+  </div>
 </div>
 
 

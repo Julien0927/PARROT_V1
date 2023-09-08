@@ -41,6 +41,6 @@ require_once('lib/open_close.php');
     </div>
   </footer>
 </div>
-
+<script src="assets/js/script.js"></script>
 </body>
 </html>
