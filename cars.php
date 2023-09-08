@@ -2,7 +2,7 @@
 
 require_once('templates/header.php');
 require_once('lib/car.php');
-require_once('lib/filter.php');
+
 
 
 $cars = getCars($pdo);
@@ -11,18 +11,20 @@ $cars = getCars($pdo);
 ?>
 <form method="POST" action="<?=$_SERVER['PHP_SELF'];?>" id="filter-form">
     <label for="prix">Prix maximum :</label>
-    <input type="number" id="prix" name="prix">
+    <input type="text" id="prix" name="prix">
 
     <label for="kilometre">Kilomètres maximum : </label>
-    <input type="number" id="kilometre" name="kilometre">
+    <input type="text" id="kilometre" name="kilometre">
 
     <label for="annee">Année de mise en circulation :</label>
-    <input type="number" id="annee" name="annee">
+    <input type="text" id="annee" name="annee">
 
     <input type="submit" name="filter" value="Filtrer">
 </form>
 
 <div id="results">
+  
+
     Les résultats filtrés seront affichés ici 
 </div>
 

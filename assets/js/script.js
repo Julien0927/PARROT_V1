@@ -1,23 +1,24 @@
-function filterCars(event) {
-    event.preventDefault(); // Empêche la soumission du formulaire par défaut
+document.getElementById('filter-form').addEventListener('submit', function (e) {
+    e.preventDefault(); // Empêche la soumission du formulaire par défaut
 
-    // Récupérez les valeurs des champs de filtrage
-    const prix = $('#prix').val();
-    const kilometre = $('#kilometre').val();
-    const annee = $('#annee').val();
+    const prix = document.getElementById('prix').value;
+    const kilometre = document.getElementById('kilometre').value;
+    const annee = document.getElementById('annee').value;
 
-    // Utilisez AJAX pour envoyer une requête au serveur
-    $.ajax({
-        url: 'lib/filter.php', // L'URL de votre script PHP
-        method: 'POST',
-        data: {
-            prix: prix,
-            kilometre: kilometre,
-            annee: annee
-        }, // Les données à envoyer au serveur (ici, les filtres)
-        success: function (response) {
-            // Mettez à jour la section de résultats avec les données renvoyées par le serveur
-            $('#results').html(response);
+    const xhr = new XMLHttpRequest();
+
+    // Spécifiez la méthode et l'URL du script PHP de traitement côté serveur.
+    xhr.open('POST', 'lib/filter.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    // Configurez la fonction de rappel pour gérer la réponse AJAX.
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // Mettez à jour le contenu de la division "results" avec les données filtrées.
+            document.getElementById('results').innerHTML = xhr.responseText;
         }
-    });
-}
+    };
+
+    // Envoyez la requête AJAX avec les données du formulaire.
+    xhr.send(`prix=${prix}&kilometre=${kilometre}&annee=${annee}`);
+});

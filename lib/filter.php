@@ -34,14 +34,21 @@
       } 
       echo "Erreur lors de l'exécution de la requête SQL.";
     }*/
-    if (isset($_POST['filter'])) {
+    try {
+        $pdo = new PDO('mysql:host=localhost; dbname=garage_parrot','root', '' );
+        } 
+        catch (PDOException $e){
+            echo 'erreur de connexion à la base de données' . $e -> getMessage();
+        }
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Récupérez les valeurs des champs du formulaire POST
         $prix = $_POST['prix'];
         $kilometre = $_POST['kilometre'];
         $annee = $_POST['annee'];
 
         // Construisez la requête SQL en fonction des filtres
-        $sql = "SELECT * FROM cars WHERE prix <= :prix AND kilometre <= :kilometre AND annee >= :annee";
+        //function  filter (PDO $pdo, int $prix, int $kilometre, int $annee){
+        $sql = 'SELECT * FROM cars WHERE prix <= :prix AND kilometre <= :kilometre AND annee >= :annee';
 
         // Préparez la requête SQL
         $stmt = $pdo->prepare($sql);
@@ -65,3 +72,4 @@
             echo "<tr><td colspan='5'>Aucun résultat trouvé</td></tr>";
         }
     }
+    //}
