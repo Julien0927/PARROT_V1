@@ -8,7 +8,7 @@ document.getElementById('filter-form').addEventListener('submit', function (e) {
     const xhr = new XMLHttpRequest();
 
     // Spécifiez la méthode et l'URL du script PHP de traitement côté serveur.
-    xhr.open('POST', 'lib/filter.php', true);
+    xhr.open('POST', 'filter.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     // Configurez la fonction de rappel pour gérer la réponse AJAX.

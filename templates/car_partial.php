@@ -1,7 +1,5 @@
 <article class="mt-2 col-md-4">
     <div class="card ">
-        <?php 
-      ?>
         <img src="<?=getCarImage($firstImage); ?>" class="card-img-top" alt="image automobile">
           <div class="card-body">
             <h5 class="card-title"><?=$car['marque']; ?></h5>
