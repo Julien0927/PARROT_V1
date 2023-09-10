@@ -94,13 +94,13 @@ if (isset($_POST['saveCar'])) {
         <input type="text"  name="modele" id="modele" class="form-control" value="<?=$car['modele'];?>">
         
         <label for="prix" class="form-label">Prix</label>
-        <input type="text"  name="prix" id="prix" class="form-control" value="<?=$car['prix'];?>">
+        <input type="text"  name="prix" id="prix" class="form-control" value="<?=$car['prix'];?> €">
         
         <label for="annee" class="form-label">Année</label>
         <input type="text"  name="annee" id="annee" class="form-control" value="<?=$car['annee'];?>">
         
         <label for="kilometre" class="form-label">Kilomètres</label>
-        <input type="text"  name="kilometre" id="kilometre" class="form-control" value="<?=$car['kilometre'];?>">
+        <input type="text"  name="kilometre" id="kilometre" class="form-control" value="<?=$car['kilometre'];?> Km">
         
         <label for="equipements" class="form-label">Équipements et options</label>
         <textarea  name="equipements" id="equipements" cols="30" rows="" class="form-control"><?=$car['equipements'];?></textarea>

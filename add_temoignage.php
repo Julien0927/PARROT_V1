@@ -69,7 +69,6 @@ $comment = [
         <input type="text"  name="comment" id="comment" class="form-control" value="<?=$comment['comment'];?>">
     </div>
     <input type="submit" value="Soumettre" name="saveTemoignage" class="btn btn-primary mx-5 px-5">
-
     </form> 
     <?php } else { ?>
     <form action="<?= $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data" >

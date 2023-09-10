@@ -69,6 +69,7 @@ h2, h3 {
 }
 
 /*Début stylisation des étoiles de commentaires*/
+
 .rating {
     display: inline-flex;
     flex-direction: row-reverse;
@@ -99,7 +100,8 @@ h2, h3 {
     content: "\2605"; /* Étoile pleine */
     color: goldenrod;
 }
-/*Fin stylisation étoiles commentaires
+
+/*Fin stylisation étoiles commentaires*/
 
 /* Styles pour le conteneur des commentaires */
 .testimonial-carousel {
@@ -145,4 +147,5 @@ h2, h3 {
     height: 100%;
     padding: 3px;
   }
+  
   

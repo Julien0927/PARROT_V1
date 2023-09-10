@@ -7,13 +7,6 @@ require_once('lib/service.php');
 require_once('lib/open_close.php');
 require_once('lib/temoignage.php');
 
-
-/**if($_SESSION['user']['roles'] === 'Admin'){
-  foreach ($mainMenu as $key => $value) { ?>
-    <li class="nav-item"><a href="<?=$key; ?>" class="nav-link <?php if ($currentPage === $key) { echo 'active'; } ?>"><?=$value ;?></a></li>
-  <?php } 
-}*/
-
 $cars = getCars($pdo/*, _HOME_CARS_LIMIT_*/);
 $service = getService($pdo/*, _HOME_CARS_LIMIT_*/);
 $testimony = getTemoignage($pdo, );
@@ -28,7 +21,6 @@ $testimony = getTemoignage($pdo, );
       <h3 class="text-center">Bienvenue sur votre espace administrateur</h3>
   <?php } ?>
     
-
   <div class="row flex-lg-row-reverse align-items-center g-5 py-5 ">
       <div class="mb-5 col-10 col-sm-8 col-lg-5">
       <h2 class="text-center ">Témoignages</h2>
@@ -40,7 +32,13 @@ $testimony = getTemoignage($pdo, );
             <div class="testimonial">
                 <div class="card-body">
                     <h5 class="card-title"><?= $testimony['name']; ?></h5>
-                    <p class="card-text"><?= $testimony['comment']; ?></p>
+                    <p class="card-text"><?= $testimony['comment']; ?><br><span class="rating checked">
+                      <?php
+                        for ($i = 1; $i <= $testimony['note']; $i++) {
+                        echo '<label style="font-size: 20px; color: goldenrod"><span class="star py-1"><i class="fas fa-star"></i></span></label>';
+                        } ?>
+                    </span></p>
+                    
                 </div>
             </div>              
         <?php } ;?>
@@ -59,6 +57,7 @@ $testimony = getTemoignage($pdo, );
         </div>
       </div>
     </div>
+
     <div class="row p-5">
       <h1>Nos services</h1>
         <?php 

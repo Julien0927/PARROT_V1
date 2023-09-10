@@ -1,6 +1,7 @@
 <?php
 require_once('lib/car.php');
 require_once('lib/config.php');
+
     
     try {
         $pdo = new PDO('mysql:host=localhost; dbname=garage_parrot','root', '' );
@@ -32,8 +33,9 @@ require_once('lib/config.php');
        
         if (count($results) > 0) {
             // Générez le contenu de la table HTML à renvoyer en réponse à la requête AJAX
-            foreach ($results as $key => $car) {
-               $carImages = getGaleryCar($pdo, $car['id']);
+            foreach ($results as $key => $car) {?>
+                <h3>Résultat(s) de votre recherche</h3>
+               <?php $carImages = getGaleryCar($pdo, $car['id']);
                 $firstImage = isset($carImages[0]) ? $carImages[0]['image_filename'] : '_ASSETS_IMG_PATH_.car_default.jpg ';
             include('templates/car_partial.php');}
         } 

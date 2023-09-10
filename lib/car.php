@@ -42,13 +42,13 @@
     return $query->fetchAll();
   }
 
-  function saveCar(PDO $pdo, string $marque, string $modele, int $prix, array|string $images, int $annee, int $kilometre, string $equipements) {
+  function saveCar(PDO $pdo, string $marque, string $modele, string $prix, array|string $images, int $annee, int $kilometre, string $equipements) {
     $sql = 'INSERT INTO `cars` (`id`, `marque`, `modele`, `prix`, `annee`, `kilometre`, `equipements`) VALUES (NULL, :marque, :modele, :prix, :annee, :kilometre, :equipements)';
     $query = $pdo->prepare($sql);
 
     $query->bindParam(':marque', $marque, PDO::PARAM_STR);
     $query->bindParam(':modele', $modele, PDO::PARAM_STR);
-    $query->bindParam(':prix', $prix, PDO::PARAM_INT);
+    $query->bindParam(':prix', $prix, PDO::PARAM_STR);
     $query->bindParam(':annee', $annee, PDO::PARAM_INT);
     $query->bindParam(':kilometre', $kilometre, PDO::PARAM_INT);
     $query->bindParam(':equipements', $equipements, PDO::PARAM_STR);
