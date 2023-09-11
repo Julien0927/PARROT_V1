@@ -22,7 +22,7 @@ if($car) {
 
 <!--<div class="row flex-lg-row-reverse align-items-center g-5 p-5">-->
   <!--<div class="col-10 col-sm-8 col-lg-6">-->
-      <div class="flexbox">
+      <div class="flexbox mx-4">
         <?php foreach ($images as $image) { ?>
           <div class="item">
             <div class="content">
@@ -61,7 +61,7 @@ if($car) {
     </div>
   </div>
 </div>
-<div class="container text-center">
+<div class="container text-center mt-3">
   <div class="row align-items-center">
     <div class="col">
       <h2>Année</h2>
@@ -79,8 +79,12 @@ if($car) {
           <?php } ?>
         </ul>
     </div>
+  </div>
+</div>
+<div class="container mt-3 ">
+  <div class="row align-items-center">
     <div class="col">
-      <h2>Équipements</h2>
+      <h2 class="text-center">Équipements</h2>
         <ul class="list-group">
           <?php foreach ($equipements as $key => $equipement){?>
             <li class="list-group-item"><?=$equipement ;?></li>

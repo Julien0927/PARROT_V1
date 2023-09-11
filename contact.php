@@ -53,7 +53,6 @@ if(isset($_POST['saveContact'])){
         <label for="first_name" class="form-label">Prénom</label>
         <input type="first_name" name="first_name" id="first_name" class="form-control">
     </div>
-
     <div class="col">
         <label for="last_name" class="form-label">Nom</label>
         <input type="last_name" name="last_name"  id="last_name" class="form-control">
@@ -66,14 +65,12 @@ if(isset($_POST['saveContact'])){
         <label for="email" class="form-label">Email</label>
         <input type="email" name="email" id="email" class="form-control">
     </div>
-
     <div class="col">
         <label for="phone" class="form-label">Téléphone</label>
         <input type="phone" name="phone" id="phone" class="form-control">
     </div>
   </div>
 </div>
-
 <div class="container mt-3">
   <div class="row align-items-center">
     <div class="col">

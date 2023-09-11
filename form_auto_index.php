@@ -12,9 +12,11 @@ $formAutos = getFormAuto($pdo,);
 $contact = getContact($pdo);
 
 ?>
-   
-    <div class="row p-5">
-      <h1>Formulaires de contact automobile</h1>
+<h1 class="text-center">Formulaires</h1>
+<div class="container mt-3">
+  <div class="row align-items-center">
+    <div class="col">
+      <h3>Formulaires de contact automobile</h3>
         <?php 
           foreach($formAutos as $key ){
             $carsId = $key['cars_id'];
@@ -31,13 +33,19 @@ $contact = getContact($pdo);
           include('templates/form_car_partial.php');}
         ?>
     </div>
-    <div class="row p-5">
-      <h1>Formulaires de contact atelier</h1>
+  </div>
+</div>
+<div class="container mt-3">
+  <div class="row align-items-center">
+    <div class="col">
+      <h3>Formulaires de contact atelier</h3>
         <?php 
         foreach($contact as $key => $contact){
             include('templates/contact_partial.php');}
             ?>
     </div>
+  </div>
+</div>
       
 
       

@@ -4,14 +4,15 @@ require_once('lib/temoignage.php');
 
 $errors = [];
 $messages = [];
-
-$testimony = getTemoignage($pdo);
+?>
+<h1 class="row mx-5">Témoignages clients reçus</h1>
+<?php $testimony = getTemoignage($pdo);
 foreach($testimony as $key => $testimony){
     $isApproved = $testimony['approved'] == 1;
 ?>
 <div class="container mt-5">
   <div class="row align-items-center">
-    <div class="col-lg-6">
+    <div class="col">
 
     <!--<article class="row flex-lg-row align-items-center g-3 p-3">-->
         <div class="card ">
@@ -21,7 +22,7 @@ foreach($testimony as $key => $testimony){
             <form method="post">
                 <input type="hidden" name="temoignages_id" value="<?= $testimony['id']; ?>">
                 <?php if(!$isApproved){?>
-                <button type="submit" name="approveTemoignage[<?= $testimony['id']; ?>]" class="btn btn-success">Approuver</button>
+                <button type="submit" name="approveTemoignage[<?= $testimony['id']; ?>]" class="btn btn-success">À approuver</button>
                 <?php } ?>
                 <button type="submit" name="deleteTemoignage" class="btn btn-danger">Supprimer</button>
             </form>

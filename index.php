@@ -7,18 +7,26 @@ require_once('lib/service.php');
 require_once('lib/open_close.php');
 require_once('lib/temoignage.php');
 
-$cars = getCars($pdo/*, _HOME_CARS_LIMIT_*/);
+$cars = getCars($pdo, _HOME_CARS_LIMIT_);
 $service = getService($pdo/*, _HOME_CARS_LIMIT_*/);
 $testimony = getTemoignage($pdo, );
 
 ?>
-  <?php 
-    if(isset($_SESSION['user']) && $_SESSION['user']['roles'] === 'Employe'){?>
-      <h3 class="text-center">Bienvenue sur votre espace collaborateur</h3>
+        <?php 
+  if(isset($_SESSION['user']) && $_SESSION['user']['roles'] === 'Employe'){?>
+    <div class="session_effect">
+      <div class="item">
+        <h3 class="text-center">Bienvenue sur votre espace collaborateur</h3>
+      </div>
+    </div>
   <?php } ?>
   <?php 
     if(isset($_SESSION['user']) && $_SESSION['user']['roles'] === 'Admin'){?>
+    <div class="session_effect">
+      <div class="item">
       <h3 class="text-center">Bienvenue sur votre espace administrateur</h3>
+      </div>
+    </div>
   <?php } ?>
     
   <div class="row flex-lg-row-reverse align-items-center g-5 py-5 ">

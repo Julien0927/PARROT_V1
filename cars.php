@@ -26,8 +26,9 @@ $cars = getCars($pdo);
   </div>
 </div>
 
-<div class="row flex-lg-row align-items-center g-5 p-5" id="results"></div>
-
+<div class="row flex-lg-row align-items-center g-5 p-5">
+        <div id="results"></div>
+</div>
 <div class="row flex-lg-row align-items-center g-5 p-2 mx-4">
   <h1>Liste des voitures</h1>
 </div>

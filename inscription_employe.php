@@ -15,6 +15,8 @@ if(isset($_POST['addEmploye'])){
 
     if (empty($first_name) || empty($last_name) || empty($email) || empty($password)) {
         $errors[] = 'Tous les champs sont obligatoires.';
+        } elseif (strlen($password) < 8) {
+        $errors[] = 'Votre mot de passe doit comporter plus de 8 caractères';
     } else {
     $res = addEmploye($pdo, $_POST['first_name'], $_POST['last_name'], $_POST['email'], $_POST['password']);
     if($res){
@@ -26,10 +28,9 @@ if(isset($_POST['addEmploye'])){
 
     }
 }
-
 ?>
 
-<h1>Inscription</h1>
+<h1 class="row px-5">Inscription</h1>
 
 <?php foreach($messages as $message) {?>
     <div class="alert alert-success">
@@ -43,28 +44,32 @@ if(isset($_POST['addEmploye'])){
 <?php } ?>
 
 <form method="POST" enctype="multipart/form-data" action="<?= $_SERVER['PHP_SELF']?>" >
-    <div class="mb-2 px-5">
+<div class="container mt-3">
+    <div class="row align-items-center">
+        <div class="col">
         <label for="first_name" class="form-label">Prénom</label>
         <input type="first_name" name="first_name" id="first_name" class="form-control">
-    </div>
-
-    <div class="mb-2 px-5">
+        </div>
+        <div class="col">
         <label for="last_name" class="form-label">Nom</label>
         <input type="last_name" name="last_name"  id="last_name" class="form-control" >
+        </div>
     </div>
-
-
-    <div class="mb-2 px-5">
+</div>
+<div class="container mt-3">
+    <div class="row align-items-center">
+        <div class="col">
         <label for="email" class="form-label">Email</label>
         <input type="email" name="email" id="email" class="form-control" value=" @parrot.fr">
-    </div>
-
-    <div class="mb-2 px-5">
-        <label for="password" class="form-label">Mot de passe</label>
+        </div>
+        <div class="col">
+            <label for="password" class="form-label">Mot de passe</label>
         <input type="password" name="password" id="password" class="form-control" placeholder="minimum 8 caractères" >
     </div>
+        <input type="submit" value="inscription" name="addEmploye" class="btn btn-primary mt-3 px-5">
+    </div>
+</div>
    
-    <input type="submit" value="inscription" name="addEmploye" class="btn btn-primary">
 </form>
 
 

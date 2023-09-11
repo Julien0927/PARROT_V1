@@ -125,9 +125,9 @@ if (isset($_POST['saveCar'])) {
     <div class="container mt-3">
         <div class="row align-items-center">
             <div class="col">
-        <label for="file" type="form-label">Images</label>
-        <input type="file" name="file[]" multiple id="file">
-        <input type="submit" value="enregistrer" name="saveCar" class="btn btn-primary px-5 mx-5">
+                <label for="file" type="form-label">Images</label>
+                <input type="file" name="file[]" multiple id="file">
+                <input type="submit" value="enregistrer" name="saveCar" class="btn btn-primary px-5 mx-5">
             </div>
         </div>
     </div>

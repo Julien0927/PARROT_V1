@@ -65,7 +65,7 @@ if (isset ($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != ''){
 }
 ?>
 
-<h1>Ajouter une prestation</h1>
+<h2 class="row px-5">Ajouter une prestation</h2>
 
 <?php foreach($messages as $message) {?>
     <div class="alert alert-success">
@@ -79,22 +79,28 @@ if (isset ($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != ''){
 <?php } ?>
 
 <form action="<?= $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data" >
-    <div class="mb-2 px-5">
+<div class="container mt-3">
+        <div class="row align-items-center">
+            <div class="col">
         <label for="name" class="form-label">Service</label>
         <input type="text" name="name" id="name" class="form-control" value="<?=$service['name'];?>">
-    </div>
-    <div class="mb-3 px-5">
         <label for="description" class="form-label">Nos prestations</label>
-        <textarea  name="description" id="description" cols="30" rows="" class="form-control"><?=$service['description'];?></textarea>
-    </div>
-    <div class="mb-3 p-5">
+        <textarea  name="description" id="description" cols="30" rows="5" class="form-control"><?=$service['description'];?></textarea>
+            </div>
+        </div>
+</div>
+    <div class="container mt-3">
+        <div class="row align-items-center">
+            <div class="col">
         <label for="file" type="form-label">Image</label>
         <input type="file" name="file" id="file">
-    </div>
-    <input type="submit" value="enregistrer" name="saveService" class="btn btn-primary mx-5 px-5 ">
+        <input type="submit" value="enregistrer" name="saveService" class="btn btn-primary mx-5 px-5 ">
+            </div>
+        </div>
+    </div>            
 </form>
 
-<h1>Modifier une prestation</h1>
+<h2 class="row px-5 mt-5">Modifier une prestation</h2>
 
 <?php 
 $updateService = getService($pdo/*, _HOME_CARS_LIMIT_*/);
@@ -113,9 +119,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
   }
 ?>
-
+<div class="row mx-4">
 <?php foreach ($updateService as $updateService){ ?>
     <article class="mt-3 col-md-4">
+        <div class="card_services">
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title"><?= $updateService['name']; ?></h5>
@@ -133,6 +140,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <input type="submit" value="Modifier" name="updateService" class="btn btn-primary mx-5 px-5">
                 </form>
             </div>
+        </div>
         </div>
     </article>
 <?php };

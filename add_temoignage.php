@@ -43,7 +43,7 @@ $comment = [
 ?>
 <?php 
     if(isset($_SESSION['user']) && $_SESSION['user']['roles'] === 'Employe'){?>
-      <h3 class="text-center">Partagez vos retours clients</h3>
+      <h3 class="text-center mt-3">Partagez vos retours clients</h3>
   <?php } else {?>
         <h1 class="text-center">Faites nous part de votre expérience</h1>
   <?php } ?>

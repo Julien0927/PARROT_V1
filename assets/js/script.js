@@ -22,3 +22,4 @@ document.getElementById('filter-form').addEventListener('submit', function (e) {
     // Envoyez la requête AJAX avec les données du formulaire.
     xhr.send(`prix=${prix}&kilometre=${kilometre}&annee=${annee}`);
 });
+

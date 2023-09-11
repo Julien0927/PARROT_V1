@@ -15,6 +15,9 @@ if(isset($_POST['addUser'])){
 
     if (empty($first_name) || empty($last_name) || empty($email) || empty($password)) {
         $errors[] = 'Tous les champs sont obligatoires.';
+
+        } elseif (strlen($password) < 8) {
+        $errors[] = 'Votre mot de passe doit comporter plus de 8 caractères';
     } else {
     
     $res = addUser($pdo, $_POST['first_name'], $_POST['last_name'], $_POST['email'], $_POST['password']);
@@ -66,6 +69,7 @@ if(isset($_POST['addUser'])){
    
     <input type="submit" value="inscription" name="addUser" class="btn btn-primary">
 </form>
+<div id="error"></div>
 
 
 <?php
