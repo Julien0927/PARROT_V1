@@ -9,10 +9,15 @@ $testimony = getTemoignage($pdo);
 foreach($testimony as $key => $testimony){
     $isApproved = $testimony['approved'] == 1;
 ?>
-    <article class="mt-3 col-lg-4 ">
+<div class="container mt-5">
+  <div class="row align-items-center">
+    <div class="col-lg-6">
+
+    <!--<article class="row flex-lg-row align-items-center g-3 p-3">-->
         <div class="card ">
           <div class="card-body">
             <h5 class="card-title"><?=$testimony['name']; ?></h5>
+            <p class="card-text"><?=$testimony['comment']; ?></p>
             <form method="post">
                 <input type="hidden" name="temoignages_id" value="<?= $testimony['id']; ?>">
                 <?php if(!$isApproved){?>
@@ -20,10 +25,12 @@ foreach($testimony as $key => $testimony){
                 <?php } ?>
                 <button type="submit" name="deleteTemoignage" class="btn btn-danger">Supprimer</button>
             </form>
-            <p class="card-text"><?=$testimony['comment']; ?></p>
           </div>
         </div>
-    </article>
+    </div>
+</div>
+</div>
+    <!--</article>-->
 <?php
 foreach($testimony as $testimony){
 if (isset($_POST['deleteTemoignage'])){

@@ -33,7 +33,7 @@ if(isset($_POST['saveContact'])){
 
 ?>
 
-<h3 class="text-center">Formulaire de contact atelier ou par téléphone au 06.12.34.56.78</h3>
+<h1 class="text-center">Formulaire de contact atelier ou par téléphone au 06.12.34.56.78</h1>
 
 <?php foreach($messages as $message) {?>
     <div class="alert alert-success">
@@ -47,33 +47,43 @@ if(isset($_POST['saveContact'])){
 <?php } ?>
 
 <form action="<?= $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data"  >
-    <div class="mb-2 px-5">
+<div class="container mt-3">
+  <div class="row align-items-center">
+    <div class="col">
         <label for="first_name" class="form-label">Prénom</label>
         <input type="first_name" name="first_name" id="first_name" class="form-control">
     </div>
 
-    <div class="mb-2 px-5">
+    <div class="col">
         <label for="last_name" class="form-label">Nom</label>
         <input type="last_name" name="last_name"  id="last_name" class="form-control">
     </div>
-
-
-    <div class="mb-2 px-5">
+  </div>
+</div>
+<div class="container mt-3">
+  <div class="row align-items-center">
+    <div class="col">
         <label for="email" class="form-label">Email</label>
         <input type="email" name="email" id="email" class="form-control">
     </div>
 
-    <div class="mb-2 px-5">
+    <div class="col">
         <label for="phone" class="form-label">Téléphone</label>
         <input type="phone" name="phone" id="phone" class="form-control">
     </div>
+  </div>
+</div>
 
-    <div class="mb-3 px-5">
+<div class="container mt-3">
+  <div class="row align-items-center">
+    <div class="col">
         <label for="message" class="form-label">Votre Message</label>
         <textarea  type="text" name="message" id="message" cols="30" rows="10" class="form-control"></textarea>
     </div>
+    <input type="submit" value="Envoyer" name="saveContact" class="btn btn-primary px-6 mt-3">
+  </div>
+</div>
    
-    <input type="submit" value="Envoyer" name="saveContact" class="btn btn-primary">
 </form>
 
 

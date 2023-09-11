@@ -45,7 +45,7 @@ $comment = [
     if(isset($_SESSION['user']) && $_SESSION['user']['roles'] === 'Employe'){?>
       <h3 class="text-center">Partagez vos retours clients</h3>
   <?php } else {?>
-        <h2 class="text-center">Faites nous part de votre expérience</h2>
+        <h1 class="text-center">Faites nous part de votre expérience</h1>
   <?php } ?>
 
 <?php foreach($messages as $message) {?>
@@ -97,7 +97,7 @@ $comment = [
                 <label for="star5" title="5 étoiles"><span class="star"><i class="fas fa-star"></i></span></label>
             </div>
     </div>    
-        <input type="submit" value="Soumettre" name="saveTemoignage" class="btn btn-primary">
+        <input type="submit" value="Soumettre" name="saveTemoignage" class="btn btn-primary px-5 mx-5">
 </form>
 <?php } ?>
 

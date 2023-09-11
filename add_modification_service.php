@@ -91,7 +91,7 @@ if (isset ($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != ''){
         <label for="file" type="form-label">Image</label>
         <input type="file" name="file" id="file">
     </div>
-    <input type="submit" value="enregistrer" name="saveService" class="btn btn-primary">
+    <input type="submit" value="enregistrer" name="saveService" class="btn btn-primary mx-5 px-5 ">
 </form>
 
 <h1>Modifier une prestation</h1>
@@ -130,7 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <label for="description" class="form-label">Description</label>
                         <textarea type="text" name="description" id="description" class="form-control" value="<?= $updateService['description']; ?>"cols="30" rows="5"></textarea>
                     </div>
-                    <input type="submit" value="Modifier" name="updateService" class="btn btn-primary">
+                    <input type="submit" value="Modifier" name="updateService" class="btn btn-primary mx-5 px-5">
                 </form>
             </div>
         </div>

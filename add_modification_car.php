@@ -72,7 +72,7 @@ if (isset($_POST['saveCar'])) {
 
 ?>
 
-<h1>Ajouter une voiture</h1>
+<h1 class="row mx-5">Ajouter une voiture</h1>
 
 <?php foreach($messages as $message) {?>
     <div class="alert alert-success">
@@ -86,31 +86,51 @@ if (isset($_POST['saveCar'])) {
 <?php } ?>
 
 <form method="POST" enctype="multipart/form-data" >
-    <div class="col-lg-4 col-md-8 col-sm-12 mb-2 px-5">
-        <label for="marque" class="form-label">Marque</label>
-        <input type="text" name="marque" id="marque" class="form-control" value="<?=$car['marque'];?>">
-        
-        <label for="modele" class="form-label">Modèle</label>
-        <input type="text"  name="modele" id="modele" class="form-control" value="<?=$car['modele'];?>">
-        
-        <label for="prix" class="form-label">Prix</label>
-        <input type="text"  name="prix" id="prix" class="form-control" value="<?=$car['prix'];?> €">
-        
-        <label for="annee" class="form-label">Année</label>
-        <input type="text"  name="annee" id="annee" class="form-control" value="<?=$car['annee'];?>">
-        
-        <label for="kilometre" class="form-label">Kilomètres</label>
-        <input type="text"  name="kilometre" id="kilometre" class="form-control" value="<?=$car['kilometre'];?> Km">
-        
-        <label for="equipements" class="form-label">Équipements et options</label>
-        <textarea  name="equipements" id="equipements" cols="30" rows="" class="form-control"><?=$car['equipements'];?></textarea>
+    <div class="container mt-3">
+        <div class="row align-items-center">
+            <div class="col">
+                <label for="marque" class="form-label">Marque</label>
+                <input type="text" name="marque" id="marque" class="form-control" value="<?=$car['marque'];?>">
+            </div>
+            <div class="col">
+                <label for="modele" class="form-label">Modèle</label>
+                <input type="text"  name="modele" id="modele" class="form-control" value="<?=$car['modele'];?>">
+            </div>
+            <div class="col">
+                <label for="prix" class="form-label">Prix</label>
+                <input type="text"  name="prix" id="prix" class="form-control" value="<?=$car['prix'];?> €">
+            </div>
+        </div>
     </div>
-    <div class="mb-3 p-5">
+    <div class="container mt-3">
+        <div class="row align-items-center">
+            <div class="col">
+                <label for="annee" class="form-label">Année</label>
+                <input type="text"  name="annee" id="annee" class="form-control" value="<?=$car['annee'];?>">
+            </div>
+            <div class="col">
+                <label for="kilometre" class="form-label">Kilomètres</label>
+                <input type="text"  name="kilometre" id="kilometre" class="form-control" value="<?=$car['kilometre'];?> Km">
+            </div>
+        </div>
+    </div>
+    <div class="container mt-3">
+        <div class="row align-items-center">
+            <div class="col">
+                <label for="equipements" class="form-label">Équipements et options</label>
+                <textarea  name="equipements" id="equipements" cols="30" rows="5" class="form-control"><?=$car['equipements'];?></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-3">
+        <div class="row align-items-center">
+            <div class="col">
         <label for="file" type="form-label">Images</label>
         <input type="file" name="file[]" multiple id="file">
+        <input type="submit" value="enregistrer" name="saveCar" class="btn btn-primary px-5 mx-5">
+            </div>
+        </div>
     </div>
-    <input type="submit" value="enregistrer" name="saveCar" class="btn btn-primary px-5 mx-5">
-    
 </form>
 
 <?php 

@@ -16,7 +16,7 @@
   // Fonction qui permet de récupérer les formulaires de contact automobile
   function getFormAuto(PDO $pdo){
     $statement = 'SELECT 
-    fa.cars_id, c.marque, c.modele, c.annee, c.image, fa.first_name, 
+    fa.cars_id, c.marque, c.modele, c.annee, c.image_filename, fa.first_name, 
     fa.last_name, fa.email, fa.phone, fa.message 
     FROM formauto AS fa
     JOIN cars AS c ON fa.cars_id = c.id';
