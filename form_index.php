@@ -7,8 +7,7 @@ require_once('lib/form_car.php');
 require_once('lib/contact.php');
 
 $cars = getCars($pdo/*, _HOME_CARS_LIMIT_*/);
-//$service = getService($pdo/*, _HOME_CARS_LIMIT_*/);
-$formAutos = getFormAuto($pdo,);
+$formAutos = getFormAuto($pdo);
 $contact = getContact($pdo);
 
 ?>
@@ -18,17 +17,17 @@ $contact = getContact($pdo);
     <div class="col">
       <h3>Formulaires de contact automobile</h3>
         <?php 
-          foreach($formAutos as $key ){
-            $carsId = $key['cars_id'];
+          foreach($formAutos as $key => $formAuto ){
+            /*$carsId = $key['cars_id'];
             $marque = $key['marque'];
             $modele = $key['modele'];
             $annee = $key['annee'];
-            $image = $key['image'];
+            $image = $key['image_filename'];
             $firstName = $key['first_name'];
             $lastName = $key['last_name'];
             $email = $key['email'];
             $phone = $key['phone'];
-            $message = $key['message'];
+            $message = $key['message'];*/
 
           include('templates/form_car_partial.php');}
         ?>
@@ -46,13 +45,9 @@ $contact = getContact($pdo);
     </div>
   </div>
 </div>
-      
-
-      
-    <?php
-    
-    require_once('templates/footer.php');
-    ?>
+<?php
+  require_once('templates/footer.php');
+?>
     
 
  

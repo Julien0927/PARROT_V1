@@ -12,7 +12,7 @@
     --bs-link-hover-color: var(--secondary);
 }
 
-  .btn-primary {
+.btn-primary {
     --bs-btn-color: #fff;
     --bs-btn-bg: var(--primary);
     --bs-btn-border-color: var(--primary);
@@ -51,7 +51,6 @@
     --bs-nav-pills-link-active-color: #fff;
     --bs-nav-pills-link-active-bg: var(--primary);
 }
-
 
 h1 {
   color: var(--primary);
@@ -111,21 +110,21 @@ h2, h3 {
     display: block; 
     overflow: hidden; 
     white-space: wrap;
-    animation: scroll 4s linear infinite; 
+    animation: scroll 10s linear infinite; 
 }
 
 /* Animation de défilement */
 @keyframes scroll {
     0% {
         transform: translateY(40%); 
-        opacity: 1;
+        /*opacity: 1;*/
     }
     80% {
         transform: translateY(-5%); 
     }
     100% {
         transform: translateY(-0%);
-        opacity: 0.4;   
+        /*opacity: 0.4; */  
     }
 }
 .flexbox {
@@ -209,3 +208,5 @@ h2, h3 {
         opacity:1;
     }
 }
+
+

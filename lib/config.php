@@ -29,7 +29,7 @@ define('_HOME_COMMENT_LIMIT_', 3);
       //'cars.php' => 'Nos voitures',
       'add_modification_car.php' => 'Ajout/Suppression voitures',
       'approved_temoignage.php' => 'Témoignages',
-      'form_auto_index.php' => 'Contact',
+      'form_index.php' => 'Contact',
     ];
 
     

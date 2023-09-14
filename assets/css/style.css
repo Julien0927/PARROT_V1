@@ -1,0 +1,15 @@
+.structure {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+}
+
+.structure h1 {
+    font-family: 'Rajdhani';
+    font-weight: 700;
+    font-size: 50px;
+}
+  
+.structure h2, h3 {
+    font-family: 'Rajdhani';
+    font-weight: 400;
+}

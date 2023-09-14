@@ -22,7 +22,7 @@ if($car) {
 
 <!--<div class="row flex-lg-row-reverse align-items-center g-5 p-5">-->
   <!--<div class="col-10 col-sm-8 col-lg-6">-->
-      <div class="flexbox mx-4">
+      <div class="flexbox">
         <?php foreach ($images as $image) { ?>
           <div class="item">
             <div class="content">

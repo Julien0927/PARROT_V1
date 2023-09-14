@@ -5,14 +5,13 @@ require_once('lib/temoignage.php');
 $errors = [];
 $messages = [];
 ?>
-<h1 class="row mx-5">Témoignages clients reçus</h1>
-<?php $testimony = getTemoignage($pdo);
-foreach($testimony as $key => $testimony){
+<h1 >Témoignages clients reçus</h1>
+<div class="row mx-4">
+    <?php $testimony = getTemoignage($pdo);
+    foreach($testimony as $key => $testimony){
     $isApproved = $testimony['approved'] == 1;
-?>
-<div class="container mt-5">
-  <div class="row align-items-center">
-    <div class="col">
+    ?>
+    <div class="mt-3 col-md-4">
 
     <!--<article class="row flex-lg-row align-items-center g-3 p-3">-->
         <div class="card ">
@@ -28,7 +27,7 @@ foreach($testimony as $key => $testimony){
             </form>
           </div>
         </div>
-    </div>
+    
 </div>
 </div>
     <!--</article>-->

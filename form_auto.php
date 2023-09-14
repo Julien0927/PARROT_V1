@@ -8,7 +8,7 @@ $messages = [];
 
 $cars_id =(int) $_GET['id'];
 
-$car_id = getCarById($pdo, $id);
+$car= getCarById($pdo, $cars_id);
 
 if(isset($_POST['saveFormAuto'])){
     $first_name = trim($_POST['first_name']);
@@ -21,18 +21,15 @@ if(isset($_POST['saveFormAuto'])){
         $errors[] = 'Tous les champs sont obligatoires.';
     } else {
     
-    $res = saveFormAuto($pdo,$cars_id, $_POST['first_name'], $_POST['last_name'], $_POST['email'], $_POST['phone'], $_POST['message']);
-
+    $res = saveFormAuto($pdo,$cars_id, $first_name,$last_name, $email, $phone, $message);
     if($res){
         $messages[]= 'Votre message a bien été envoyé';
         
     } else {
         $errors[]= 'Erreur s\'est produite, votre message n\'a pu être envoyé';
     }
-    }
 }
-
-
+}
 ?>
 
 <h3 class="text-center mt-5">Pour plus d'informations,<br> n'hésitez pas à nous contacter via le formulaire de contact ci-dessous ou par téléphone au 06.12.34.56.78</h3>
@@ -47,20 +44,20 @@ if(isset($_POST['saveFormAuto'])){
         <?=$error;?>
     </div>
 <?php } ?>
-
-<form action="<?= $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data"  >
+<form action="<?= $_SERVER['PHP_SELF']. "?id=" . $cars_id; ?>" method="POST" enctype="multipart/form-data"  >
     <div class="text-center mt-3">
-        <label for="objet" class="form-label">Message concernant le véhicule :<h3 class="mt-3"> <?=$car['marque']?> <?=$car['modele']?> de <?=$car['annee']?></h3> </label>
+        <label for="objet" class="form-label">Message concernant le véhicule :<h3 class="mt-3"> <?=$car['marque']?>
+         <?=$car['modele']?> de <?=$car['annee']?></h3> </label>
     </div>
     <div class="container ">
         <div class="row align-items-center">
             <div class="col">    
                 <label for="first_name" class="form-label">Prénom</label>
-                <input type="first_name" name="first_name" id="first_name" class="form-control">
+                <input type="text" name="first_name" id="first_name" class="form-control">
             </div>
             <div class="col">
                 <label for="last_name" class="form-label">Nom</label>
-                <input type="last_name" name="last_name"  id="last_name" class="form-control">
+                <input type="text" name="last_name"  id="last_name" class="form-control">
             </div>
         </div>
     </div>
@@ -72,7 +69,7 @@ if(isset($_POST['saveFormAuto'])){
             </div>
             <div class="col">
                 <label for="phone" class="form-label">Téléphone</label>
-                <input type="phone" name="phone" id="phone" class="form-control">
+                <input type="tel" name="phone" id="phone" class="form-control">
             </div>
         </div>
     </div>

@@ -1,31 +1,29 @@
 <?php
 require_once('templates/header.php');
-//require_once('lib/user.php');
 require_once ('lib/form_car.php');
 require_once ('lib/car.php');
 
-
 $id = (int) $_GET['id'];
 
-$car_id = getCarById($pdo, $id);
+//$car_id = getCarById($pdo, $id);
 $formAuto = getFormAutoById($pdo, $id);
 
 if ($formAuto) {
-  $car_id = $formAuto['cars_id'];
-  $marque = $formAuto['marque'];
-  $modele = $formAuto['modele'];
-  $annee = $formAuto['annee'];
-  $firstName = $formAuto['first_name'];
-  $lastName = $formAuto['last_name'];
-  $email = $formAuto['email'];
-  $phone = $formAuto['phone'];
-  $message = $formAuto['message'];
-  $image = $formAuto['image'];
+  $car_id = $formAuto['fa.cars_id'];
+  $marque = $formAuto['c.marque'];
+  $modele = $formAuto['c.modele'];
+  $annee = $formAuto['c.annee'];
+  $firstName = $formAuto['fa.first_name'];
+  $lastName = $formAuto['fa.last_name'];
+  $email = $formAuto['fa.email'];
+  $phone = $formAuto['fa.phone'];
+  $message = $formAuto['fa.message'];
+  $image = $formAuto['fa.image_filename'];
 
 
 ?>
 
-<form action="<?= $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
+<form action="<?= $_SERVER['PHP_SELF']. "?id=" . $id;?>" method="POST" enctype="multipart/form-data">
     <div class="text-center">
         <img src="<?= getFormAutoImage($image); ?>" class="d-block mx-lg-auto img-fluid" alt=""
              width="200" height="50" loading="lazy">
