@@ -1,10 +1,7 @@
 <?php
-
 require_once('templates/header.php');
 require_once('lib/tools.php');
 require_once('lib/temoignage.php');
-
-
 
 $errors = [];
 $messages = [];
@@ -12,10 +9,7 @@ $comment = [
     'name' =>'',
     'comment' =>'',
     'note' => '',
-    
 ];
-
-
     if(isset($_POST['saveTemoignage'])){
         $name = $_POST['name'];
         $comment = $_POST['comment'];
@@ -68,7 +62,7 @@ $comment = [
         <label for="comment" class="form-label">Votre commentaire</label>
         <input type="text"  name="comment" id="comment" class="form-control" value="<?=$comment['comment'];?>">
     </div>
-    <input type="submit" value="Soumettre" name="saveTemoignage" class="btn btn-primary mx-5 px-5">
+        <input type="submit" value="Soumettre" name="saveTemoignage" class="btn btn-primary mx-5 px-5">
     </form> 
     <?php } else { ?>
     <form action="<?= $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data" >
@@ -99,6 +93,21 @@ $comment = [
     </div>    
         <input type="submit" value="Soumettre" name="saveTemoignage" class="btn btn-primary px-5 mx-5">
 </form>
+<script>
+//Fonction qui permet de transformer les saisies (1ere lettre majuscule, le reste en minuscule)
+const nameInput = document.getElementById('name');
+const formatNameInput = (inputElement) => {
+    const inputValue = inputElement.value.trim();
+    const words = inputValue.split(' ');
+const formattedWords = words.map(word => {
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+});
+    inputElement.value = formattedWords.join(' ');
+};
+nameInput.addEventListener('blur', () => {
+    formatNameInput(nameInput);
+});
+</script>
 <?php } ?>
 
 <?php 

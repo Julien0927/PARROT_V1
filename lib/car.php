@@ -41,7 +41,7 @@
     $query->execute();
     return $query->fetchAll();
   }
-
+  //Fonction qui permet l'insertion et la sauvegarde d'un nouveau véhicule
   function saveCar(PDO $pdo, string $marque, string $modele, string $prix, array|string $images, int $annee, string $kilometre, string $equipements) {
     $sql = 'INSERT INTO `cars` (`id`, `marque`, `modele`, `prix`, `annee`, `kilometre`, `equipements`) VALUES (NULL, :marque, :modele, :prix, :annee, :kilometre, :equipements)';
     $query = $pdo->prepare($sql);
@@ -69,31 +69,13 @@
         return false;
     }
 }
-
-  //Fonction qui permet de modifier un véhicule
-  /**function updateCar(PDO $pdo, int $carId, string $marque, string $modele, int $prix, string|null $image, int $annee, int $kilometre, string $equipements){
-    $sql = 'UPDATE `cars` SET `marque` = :marque, `modele` = :modele, `prix` = :prix, `image` = :image, `annee` = :annee, `kilometre` = :kilometre, `equipements` = :equipements WHERE `id` = :carId';
-    $query = $pdo->prepare($sql);
-
-    $query->bindParam(':marque', $marque, PDO::PARAM_STR);
-    $query->bindParam(':modele', $modele, PDO::PARAM_STR);
-    $query->bindParam(':prix', $prix, PDO::PARAM_INT);
-    $query->bindParam(':image', $image, PDO::PARAM_STR);
-    $query->bindParam(':annee', $annee, PDO::PARAM_INT);
-    $query->bindParam(':kilometre', $kilometre, PDO::PARAM_INT);
-    $query->bindParam(':equipements', $equipements, PDO::PARAM_STR);
-    $query->bindParam(':carId', $carId, PDO::PARAM_INT);
-    
-    return $query->execute();
-}*/
-
   //Fonction qui permet de supprimer un véhicule(vendu par exemple)
-  /**function deleteCar(PDO $pdo, int $carId) {
-    $sql = 'DELETE FROM `cars` WHERE `id` = :carId';
+  function deleteCar(PDO $pdo, int $id) {
+    $sql = 'DELETE FROM `cars` WHERE `id` = :id';
     $query = $pdo->prepare($sql);
 
-    $query->bindParam(':carId', $carId, PDO::PARAM_INT);
+    $query->bindParam(':id', $id, PDO::PARAM_INT);
     
-    return $query->execute();
-
-  }*/
+    $query->execute();
+  }
+  

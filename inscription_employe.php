@@ -6,7 +6,6 @@ require_once('lib/user.php');
 $errors = [];
 $messages = [];
 
-
 if(isset($_POST['addEmploye'])){
     $first_name = trim($_POST['first_name']);
     $last_name = trim($_POST['last_name']);
@@ -25,13 +24,10 @@ if(isset($_POST['addEmploye'])){
     } else {
         $errors[]= 'Erreur s\'est produite lors de l\inscription';
 }
-
     }
 }
 ?>
-
 <h1 class="row px-5">Inscription</h1>
-
 <?php foreach($messages as $message) {?>
     <div class="alert alert-success">
         <?=$message;?>
@@ -42,7 +38,6 @@ if(isset($_POST['addEmploye'])){
         <?=$error;?>
     </div>
 <?php } ?>
-
 <form method="POST" enctype="multipart/form-data" action="<?= $_SERVER['PHP_SELF']?>" >
 <div class="container mt-3">
     <div class="row align-items-center">
@@ -69,11 +64,8 @@ if(isset($_POST['addEmploye'])){
         <input type="submit" value="inscription" name="addEmploye" class="btn btn-primary mt-3 px-5">
     </div>
 </div>
-   
 </form>
-
 
 <?php
 require_once('templates/footer.php');
-
 ?>

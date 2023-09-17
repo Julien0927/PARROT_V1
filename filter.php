@@ -1,7 +1,6 @@
 <?php
 require_once('lib/car.php');
 require_once('lib/config.php');
-
     
     try {
         $pdo = new PDO('mysql:host=localhost; dbname=garage_parrot','root', '' );
@@ -31,16 +30,15 @@ require_once('lib/config.php');
 
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
        
-        if (count($results) > 0) {
-            // Générez le contenu de la table HTML à renvoyer en réponse à la requête AJAX
-            foreach ($results as $key => $car) {?>
-                <h3>Résultat(s) de votre recherche</h3>
-               <?php $carImages = getGaleryCar($pdo, $car['id']);
-                $firstImage = isset($carImages[0]) ? $carImages[0]['image_filename'] : '_ASSETS_IMG_PATH_.car_default.jpg ';
+        if (count($results) > 0) {?>
+            <h3>Résultat(s) de votre recherche</h3>
+            <?php foreach ($results as $key => $car) {
+               $carImages = getGaleryCar($pdo, $car['id']);
+                $firstImage = isset($carImages[0]) ? $carImages[0]['image_filename'] : '_ASSETS_IMG_PATH_ .car_default.jpg ';
             include('templates/car_partial.php');}
-        } 
-    } else {
+        } else {
             echo "<tr><td colspan='5'>Aucun résultat trouvé</td></tr>";
+    } 
 }
       
     

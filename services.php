@@ -10,12 +10,9 @@ $service = getService($pdo);
 </div>
 
 <div class="row mx-4">
-
     <?php foreach($service as $key => $service){
       include('templates/service_partial.php');
-    
     }?>
-      
 </div>
     
 <?php

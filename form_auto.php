@@ -1,6 +1,6 @@
 <?php
 require_once('templates/header.php');
-//require_once('lib/user.php');
+require_once('lib/car.php');
 require_once ('lib/form_car.php');
 
 $errors = [];
@@ -33,6 +33,7 @@ if(isset($_POST['saveFormAuto'])){
 ?>
 
 <h3 class="text-center mt-5">Pour plus d'informations,<br> n'hésitez pas à nous contacter via le formulaire de contact ci-dessous ou par téléphone au 06.12.34.56.78</h3>
+<h3 class="text-center"> <?= $car['marque']?> <?= $car['modele'] ?> de <?= $car['annee'] ?> </h3>
 
 <?php foreach($messages as $message) {?>
     <div class="alert alert-success">
@@ -46,8 +47,6 @@ if(isset($_POST['saveFormAuto'])){
 <?php } ?>
 <form action="<?= $_SERVER['PHP_SELF']. "?id=" . $cars_id; ?>" method="POST" enctype="multipart/form-data"  >
     <div class="text-center mt-3">
-        <label for="objet" class="form-label">Message concernant le véhicule :<h3 class="mt-3"> <?=$car['marque']?>
-         <?=$car['modele']?> de <?=$car['annee']?></h3> </label>
     </div>
     <div class="container ">
         <div class="row align-items-center">
@@ -84,9 +83,7 @@ if(isset($_POST['saveFormAuto'])){
         <input type="submit" value="Envoyer" name="saveFormAuto" class="btn btn-primary mt-2">
     </div>
 </div>
-
 </form>
-
 
 <?php 
 require_once('templates/footer.php');

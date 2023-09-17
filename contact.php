@@ -1,12 +1,9 @@
 <?php
 require_once('templates/header.php');
-//require_once('lib/user.php');
 require_once ('lib/contact.php');
 
 $errors = [];
 $messages = [];
-
-
 
 if(isset($_POST['saveContact'])){
     $first_name = trim($_POST['first_name']);
@@ -29,12 +26,8 @@ if(isset($_POST['saveContact'])){
     }
     }
 }
-
-
 ?>
-
 <h1 class="text-center">Formulaire de contact atelier ou par téléphone au 06.12.34.56.78</h1>
-
 <?php foreach($messages as $message) {?>
     <div class="alert alert-success">
         <?=$message;?>
@@ -63,7 +56,7 @@ if(isset($_POST['saveContact'])){
   <div class="row align-items-center">
     <div class="col">
         <label for="email" class="form-label">Email</label>
-        <input type="email" name="email" id="email" class="form-control">
+        <input type="email" name="email" id="email" class="form-control" required >
     </div>
     <div class="col">
         <label for="phone" class="form-label">Téléphone</label>
@@ -80,9 +73,21 @@ if(isset($_POST['saveContact'])){
     <input type="submit" value="Envoyer" name="saveContact" class="btn btn-primary px-6 mt-3">
   </div>
 </div>
-   
 </form>
+<script>
+    const phoneInput = document.getElementById('phone');
 
+phoneInput.addEventListener('input', () => {
+    let phoneNumber = phoneInput.value.replace(/\D/g, ''); 
+
+    if (phoneNumber.length > 10) {
+        phoneNumber = phoneNumber.slice(0, 10); 
+    }
+
+    phoneInput.value = phoneNumber.replace(/(\d{2})(?=\d)/g, '$1 ');
+
+});
+</script>
 
 <?php 
 require_once('templates/footer.php');

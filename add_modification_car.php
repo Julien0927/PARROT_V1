@@ -98,7 +98,7 @@ if (isset($_POST['saveCar'])) {
             </div>
             <div class="col">
                 <label for="prix" class="form-label">Prix</label>
-                <input type="text"  name="prix" id="prix" class="form-control" value="<?=$car['prix'];?> €">
+                <input type="text"  name="prix" id="prix" class="form-control" value="<?=$car['prix'];?>">
             </div>
         </div>
     </div>
@@ -110,7 +110,7 @@ if (isset($_POST['saveCar'])) {
             </div>
             <div class="col">
                 <label for="kilometre" class="form-label">Kilomètres</label>
-                <input type="text"  name="kilometre" id="kilometre" class="form-control" value="<?=$car['kilometre'];?> Km">
+                <input type="text"  name="kilometre" id="kilometre" class="form-control" value="<?=$car['kilometre'];?>">
             </div>
         </div>
     </div>
@@ -127,12 +127,58 @@ if (isset($_POST['saveCar'])) {
             <div class="col">
                 <label for="file" type="form-label">Images</label>
                 <input type="file" name="file[]" multiple id="file">
-                <input type="submit" value="enregistrer" name="saveCar" class="btn btn-primary px-5 mx-5">
+                <input type="submit" value="Enregistrer" name="saveCar" class="btn btn-primary px-5 mx-5">
             </div>
         </div>
     </div>
 </form>
+<script>
+//Fonction qui permet de gérer les erreurs de saisie d'année
+const anneeInput = document.getElementById('annee');
+const anneeActuelle = new Date().getFullYear();
 
+anneeInput.addEventListener('input', () => {
+    let valeur = anneeInput.value; 
+    valeur = valeur.replace(/\D/g, '');
+
+    if (valeur.length > 4) {
+        valeur = valeur.slice(0, 4)
+    } 
+    
+    let annee = parseInt(valeur);
+
+    if (annee > anneeActuelle) {
+        annee = anneeActuelle;
+    }
+    anneeInput.value = annee; 
+});
+//Fonction qui permet de controler la saisie de prix
+const prixInput = document.getElementById('prix');
+
+prixInput.addEventListener('input', () => {
+    let valPrix = prixInput.value;
+    valPrix = valPrix.replace(/\D/g, ''); 
+
+    if (valPrix.length > 6) {
+        valPrix = valPrix.slice(0, 6); 
+    }
+    
+    prixInput.value = valPrix; 
+});
+//Fonction qui permet de controler la saisie de kilometre
+const kilometreInput = document.getElementById('kilometre');
+
+kilometreInput.addEventListener('input', () => {
+    let valKilometre = kilometreInput.value;
+    valKilometre = valKilometre.replace(/\D/g, ''); 
+
+    if (valKilometre.length > 6) {
+        valKilometre = valKilometre.slice(0, 6); 
+    }
+    
+    kilometreInput.value = valKilometre; 
+});
+</script>
 <?php 
 require_once('templates/footer.php');
 ?>

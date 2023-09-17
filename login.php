@@ -1,12 +1,9 @@
 <?php
-//require_once ('lib/session.php');
 require_once('templates/header.php');
 require_once('lib/user.php');
 ?>
 
-
 <h1 class="px-5">Connexion</h1>
-
 <?php foreach($messages as $message) {?>
     <div class="alert alert-success">
         <?=$message;?>
@@ -17,7 +14,6 @@ require_once('lib/user.php');
         <?=$error;?>
     </div>
 <?php } ?>
-
 <form method="POST" enctype="multipart/form-data" action="<?= $_SERVER['PHP_SELF']?>">
     <div class="col-lg-4 col-md-8 col-sm-12 mb-2 px-5">
         <label for="email" class="form-label">Email</label>
@@ -31,8 +27,6 @@ require_once('lib/user.php');
    
     <input type="submit" value="connexion" name="loginUser" class="btn btn-primary px-5 mx-5">
 </form>
-
-
 <?php
 require_once('templates/footer.php');
 

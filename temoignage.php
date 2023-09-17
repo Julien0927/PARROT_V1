@@ -1,14 +1,10 @@
 <?php
-
 require_once('templates/header.php');
-//require_once('lib/tools.php');
 require_once('lib/temoignage.php');
-
 
 $id =(int) $_GET['id'];
 
 $testimony = getTemoignageById($pdo, $id);
-
 
 if($testimony) {
   
@@ -16,7 +12,6 @@ if($testimony) {
   $comment = linesToArray($testimony['comment']);
   $note = linesToArray($testimony['note']);
 ?>
-
 
 <div class="row flex-lg-row-reverse align-items-center g-1 p-5">
   <h2>Témoignages</h2>
