@@ -90,7 +90,8 @@ $comment = [
                 <input type="radio" id="star5" name="note" value="5" <?php if ($comment['note'] == 5) echo 'checked'; ?>>
                 <label for="star5" title="5 étoiles"><span class="star"><i class="fas fa-star"></i></span></label>
             </div>
-    </div>    
+    </div>
+        <?php addCSRFTokenToForm(); ?>    
         <input type="submit" value="Soumettre" name="saveTemoignage" class="btn btn-primary px-5 mx-5">
 </form>
 <?php } ?>

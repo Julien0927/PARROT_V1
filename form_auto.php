@@ -80,6 +80,7 @@ if(isset($_POST['saveFormAuto'])){
                 <textarea  type="text" name="message" id="message" cols="20" rows="5" class="form-control"></textarea>
             </div>
         </div>
+        <?php addCSRFTokenToForm(); ?>
         <input type="submit" value="Envoyer" name="saveFormAuto" class="btn btn-primary mt-2">
     </div>
 </div>

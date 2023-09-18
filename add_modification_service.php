@@ -1,12 +1,9 @@
 <?php
-
 require_once('templates/header.php');
-
 
 if(!isset ($_SESSION['user'])){
    header('location: login.php');
 }
-
 
 require_once('lib/tools.php');
 require_once('lib/service.php');
@@ -132,6 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <label for="description" class="form-label">Description</label>
                         <textarea type="text" name="description" id="description" class="form-control" value="<?= $updateService['description']; ?>"cols="30" rows="5"></textarea>
                     </div>
+                    <?php addCSRFTokenToForm(); ?>
                     <input type="submit" value="Modifier" name="updateService" class="btn btn-primary mx-5 px-5">
                 </form>
             </div>

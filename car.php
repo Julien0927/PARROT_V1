@@ -99,6 +99,9 @@ if($car) {
     <?php } 
     
 require_once('del_car.php');
+if(isset($_SESSION['user']) && $_SESSION['user']['roles'] === 'Visiteur' || 
+!isset($_SESSION['user'])){
 require_once ('form_auto.php');
+}
 require_once('templates/footer.php');
 ?>

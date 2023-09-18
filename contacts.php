@@ -35,6 +35,7 @@ if ($contact) {
     <div class="mb-3 px-5">
         <label for="message" class="form-label">Message reçu : <?= $message ?></label>
     </div>
+    <?php addCSRFTokenToForm(); ?>
     <input type="submit" value="Répondre" name="saveFormAuto" class="btn btn-primary">
 </form>
 <?php

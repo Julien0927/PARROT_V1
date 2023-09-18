@@ -23,6 +23,7 @@ $testimony = getTemoignage($pdo);
                   <?php if(!$isApproved){?>
                   <button type="submit" name="approveTemoignage[<?= $testimony['id']; ?>]" class="btn btn-success">À approuver</button>
                   <?php } ?>
+                  <?php addCSRFTokenToForm(); ?>
                   <button type="submit" name="deleteTemoignage" class="btn btn-danger">Supprimer</button>
               </form>
             </div>

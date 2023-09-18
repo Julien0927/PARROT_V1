@@ -24,7 +24,7 @@ require_once('lib/user.php');
         <label for="password" class="form-label">Mot de passe</label>
         <input type="password" name="password" id="password" class="form-control">
     </div>
-   
+    <?php addCSRFTokenToForm(); ?>
     <input type="submit" value="connexion" name="loginUser" class="btn btn-primary px-5 mx-5">
 </form>
 <?php

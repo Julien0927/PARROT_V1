@@ -70,6 +70,7 @@ if(isset($_POST['saveContact'])){
         <label for="message" class="form-label">Votre Message</label>
         <textarea  type="text" name="message" id="message" cols="30" rows="10" class="form-control"></textarea>
     </div>
+    <?php addCSRFTokenToForm(); ?>
     <input type="submit" value="Envoyer" name="saveContact" class="btn btn-primary px-6 mt-3">
   </div>
 </div>

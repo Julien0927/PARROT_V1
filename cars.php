@@ -22,6 +22,7 @@ $cars = getCars($pdo);
         <label for="annee">Année de mise en circulation :</label>
         <input type="text" id="annee" name="annee">
       </div>
+        <?php addCSRFTokenToForm(); ?>
         <input type="submit" name="filter" value="Filtrer" class="btn btn-primary px-5 mt-3">
         </form>
     </div>

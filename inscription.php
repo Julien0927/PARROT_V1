@@ -65,6 +65,7 @@ if(isset($_POST['addUser'])){
             <label for="password" class="form-label">Mot de passe</label>
             <input type="password" name="password" id="password" class="form-control" required placeholder="Minimum 8 caractères">
         </div>
+        <?php addCSRFTokenToForm(); ?>
         <input type="submit" value="inscription" name="addUser" class="btn btn-primary px-6 mt-3">
     </div>
 </div>

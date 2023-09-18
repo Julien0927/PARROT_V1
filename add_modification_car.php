@@ -129,7 +129,7 @@ if (isset($_POST['saveCar'])) {
             <div class="col">
                 <label for="file" type="form-label">Images</label>
                 <input type="file" name="file[]" multiple id="file">
-                
+                <?php addCSRFTokenToForm(); ?>
                 <input type="submit" value="Enregistrer" name="saveCar" class="btn btn-primary px-5 mx-5">
             </div>
         </div>

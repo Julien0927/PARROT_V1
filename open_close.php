@@ -37,6 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <label for="afternoon_hours" class="form-label">Après-midi</label>
                         <input type="text" name="afternoon_hours" id="afternoon_hours" class="form-control" value="<?= $open['afternoon_hours']; ?>">
                     </div>
+                        <?php addCSRFTokenToForm(); ?>
                         <input type="submit" value="Modifier" name="modifyHours" class="btn btn-primary">
                     </form>
                 </div>
