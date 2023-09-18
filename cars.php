@@ -40,35 +40,37 @@ $cars = getCars($pdo);
       include('templates/car_partial.php');
     }?>
 </div>
+
 <script>
-  //Fonction qui permet de filtrer les véhicules
-const filtre = document.getElementById('filter-form')
-filtre.addEventListener('submit', (e) => {
+  const filtre = document.getElementById('filter-form');
+
+filtre.addEventListener('submit', async (e) => {
     e.preventDefault(); // Empêche la soumission du formulaire par défaut
 
     const prix = document.getElementById('prix').value;
     const kilometre = document.getElementById('kilometre').value;
     const annee = document.getElementById('annee').value;
 
-    const xhr = new XMLHttpRequest();
+    try {
+        const response = await fetch('filter.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `prix=${prix}&kilometre=${kilometre}&annee=${annee}`,
+        });
 
-    // Spécifiez la méthode et l'URL du script PHP de traitement côté serveur.
-    xhr.open('POST', 'filter.php', true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-    // Configurez la fonction de rappel pour gérer la réponse AJAX.
-    xhr.onreadystatechange =  () => {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            // Mettez à jour le contenu de la division "results" avec les données filtrées.
-            document.getElementById('results').innerHTML = xhr.responseText;
+        if (response.ok) {
+            const data = await response.text();
+            document.getElementById('results').innerHTML = data;
+        } else {
+            console.error('La requête a échoué avec le statut :', response.status);
         }
-    };
-
-    // Envoyez la requête AJAX avec les données du formulaire.
-    xhr.send(`prix=${prix}&kilometre=${kilometre}&annee=${annee}`);
+    } catch (error) {
+        console.error('Une erreur s\'est produite :', error);
+    }
 });
 </script>
-
 <?php
 require_once('templates/footer.php');
 ?>

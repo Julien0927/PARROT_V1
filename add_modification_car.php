@@ -21,7 +21,7 @@ $car = [
     'equipements' =>'',
     
 ];
-//$categories = getCategories($pdo);
+
 if (isset($_POST['saveCar'])) {
     $filenames = [];
 
@@ -29,7 +29,9 @@ if (isset($_POST['saveCar'])) {
         foreach ($_FILES['file']['tmp_name'] as $index => $tmpName) {
             $checkImage = getimagesize($tmpName);
             if ($checkImage !== false) {
-                $fileName = uniqid() . '-' . slugify($_FILES['file']['name'][$index]);
+                $rawFileName = $_FILES['file']['name'][$index];
+                $cleanedFileName = strip_tags($rawFileName);
+                $fileName = uniqid() . '-' . slugify($cleanedFileName);
                 move_uploaded_file($tmpName, _CARS_IMG_PATH_ . $fileName);
                 $filenames[] = $fileName;
             } else {
@@ -50,7 +52,7 @@ if (isset($_POST['saveCar'])) {
         if (empty($marque) || empty($modele) || empty($prix) || empty($annee) || empty($kilometre) || empty($equipements)) {
         $errors[] = 'Tous les champs sont obligatoires.';
     } else {
-   $res=saveCar($pdo,$_POST['marque'], $_POST['modele'], $_POST['prix'], $filenames, $_POST['annee'], $_POST['kilometre'], $_POST['equipements']);
+   $res=saveCar($pdo,$marque, $modele, $prix, $filenames, $annee, $kilometre, $equipements);
     if($res){
         $messages[] = 'La voiture a bien été enregistrée';
     } else {
@@ -127,12 +129,33 @@ if (isset($_POST['saveCar'])) {
             <div class="col">
                 <label for="file" type="form-label">Images</label>
                 <input type="file" name="file[]" multiple id="file">
+                
                 <input type="submit" value="Enregistrer" name="saveCar" class="btn btn-primary px-5 mx-5">
             </div>
         </div>
     </div>
 </form>
 <script>
+//Fonction qui permet de transformer les saisies (1ere lettre majuscule, le reste en minuscule)
+const marqueInput = document.getElementById('marque')
+const modeleInput = document.getElementById('modele')
+
+const formatNameInput = (inputElement) => {
+    const inputValue = inputElement.value.trim();
+    const words = inputValue.split(' ');
+
+const formattedWords = words.map(word => {
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+});
+    inputElement.value = formattedWords.join(' ');
+};
+marqueInput.addEventListener('blur', () => {
+    formatNameInput(marqueInput);
+});
+modeleInput.addEventListener('blur', () => {
+    formatNameInput(modeleInput);
+});
+
 //Fonction qui permet de gérer les erreurs de saisie d'année
 const anneeInput = document.getElementById('annee');
 const anneeActuelle = new Date().getFullYear();
@@ -152,6 +175,7 @@ anneeInput.addEventListener('input', () => {
     }
     anneeInput.value = annee; 
 });
+
 //Fonction qui permet de controler la saisie de prix
 const prixInput = document.getElementById('prix');
 
@@ -165,6 +189,7 @@ prixInput.addEventListener('input', () => {
     
     prixInput.value = valPrix; 
 });
+
 //Fonction qui permet de controler la saisie de kilometre
 const kilometreInput = document.getElementById('kilometre');
 

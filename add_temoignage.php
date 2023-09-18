@@ -93,23 +93,24 @@ $comment = [
     </div>    
         <input type="submit" value="Soumettre" name="saveTemoignage" class="btn btn-primary px-5 mx-5">
 </form>
+<?php } ?>
 <script>
-//Fonction qui permet de transformer les saisies (1ere lettre majuscule, le reste en minuscule)
-const nameInput = document.getElementById('name');
-const formatNameInput = (inputElement) => {
+    const nameInput = document.getElementById('name');
+    const formatNameInput = (inputElement) => {
     const inputValue = inputElement.value.trim();
     const words = inputValue.split(' ');
+
 const formattedWords = words.map(word => {
     return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
 });
     inputElement.value = formattedWords.join(' ');
 };
-nameInput.addEventListener('blur', () => {
+    nameInput.addEventListener('blur', () => {
     formatNameInput(nameInput);
 });
-</script>
-<?php } ?>
 
+
+</script>
 <?php 
 require_once('templates/footer.php');
 ?>

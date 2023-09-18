@@ -7,28 +7,29 @@ $messages = [];
 $testimony = getTemoignage($pdo);
 ?>
 <h1 class="text-center">Témoignages clients reçus</h1>
-<?php 
+<div class="container">
+  <div class="row">
+    <?php 
     foreach($testimony as $key => $testimony){
-      $isApproved = $testimony['approved'] == 1;
-      ?>
-      <div class="row mx-4">
-    <div class="col-md-4 mt-3">
-
-        <div class="card ">
-          <div class="card-body">
-            <h5 class="card-title"><?=$testimony['name']; ?></h5>
-            <p class="card-text"><?=$testimony['comment']; ?></p>
-            <form method="post">
-                <input type="hidden" name="temoignages_id" value="<?= $testimony['id']; ?>">
-                <?php if(!$isApproved){?>
-                <button type="submit" name="approveTemoignage[<?= $testimony['id']; ?>]" class="btn btn-success">À approuver</button>
-                <?php } ?>
-                <button type="submit" name="deleteTemoignage" class="btn btn-danger">Supprimer</button>
-            </form>
+    $isApproved = $testimony['approved'] == 1;
+    ?>
+        <div class="col-md-4 mt-3">
+          <div class="card ">
+            <div class="card-body">
+              <h5 class="card-title"><?=$testimony['name']; ?></h5>
+              <p class="card-text"><?=$testimony['comment']; ?></p>
+              <form method="post">
+                  <input type="hidden" name="temoignages_id" value="<?= $testimony['id']; ?>">
+                  <?php if(!$isApproved){?>
+                  <button type="submit" name="approveTemoignage[<?= $testimony['id']; ?>]" class="btn btn-success">À approuver</button>
+                  <?php } ?>
+                  <button type="submit" name="deleteTemoignage" class="btn btn-danger">Supprimer</button>
+              </form>
+            </div>
           </div>
         </div>
-    
-</div>
+        <?php } ?>
+  </div>
 </div>
 <?php
 foreach($testimony as $testimony){
@@ -44,7 +45,7 @@ if (isset($_POST['deleteTemoignage'])){
      }?>                 
      
 <?php } 
-}
+
 require_once('add_temoignage.php');
 require_once('templates/footer.php');
       

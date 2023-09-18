@@ -21,21 +21,16 @@ $service = [
 if(isset ($_POST['saveService'])){
 $filename = null;
 
-//Si un fichier a été envoyé
 if (isset ($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != ''){
 
-    //La méthode getimagesize retourne false si le fichier n'est pas une image
     $checkImage = getimagesize($_FILES['file']['tmp_name']);
         if ($checkImage !== false) {
-            // Si c'est une image on traite
-
-            // uniqid() évitera l'écrasement de fichier
-            $fileName = uniqid().'-'.slugify($_FILES['file']['name']);
+            
+            $fileName = uniqid().'-'.slugify(strip_tags($_FILES['file']['name']));
             
             move_uploaded_file($_FILES['file']['tmp_name'], _REPAR_IMG_PATH_ .$fileName);
 
         } else {
-            // Sinon on affiche un message erreur
             $errors[] = 'Le fichier doit être une image';
         }
 
@@ -94,7 +89,7 @@ if (isset ($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != ''){
             <div class="col">
         <label for="file" type="form-label">Image</label>
         <input type="file" name="file" id="file">
-        <input type="submit" value="enregistrer" name="saveService" class="btn btn-primary mx-5 px-5 ">
+        <input type="submit" value="Enregistrer" name="saveService" class="btn btn-primary mx-5 px-5 ">
             </div>
         </div>
     </div>            
@@ -145,7 +140,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </article>
 <?php };
 ?>
+<script>
+const serviceInput = document.getElementById('name');
 
+const formatNameInput = (inputElement) => {
+    const inputValue = inputElement.value.trim();
+    const words = inputValue.split(' ');
+
+const formattedWords = words.map(word => {
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+});
+    inputElement.value = formattedWords.join(' ');
+};
+
+serviceInput.addEventListener('blur', () => {
+    formatNameInput(serviceInput);
+});
+
+</script>
 
 <?php 
 require_once('templates/footer.php');

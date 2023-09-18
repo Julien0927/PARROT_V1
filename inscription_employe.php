@@ -55,7 +55,7 @@ if(isset($_POST['addEmploye'])){
     <div class="row align-items-center">
         <div class="col">
         <label for="email" class="form-label">Email</label>
-        <input type="email" name="email" id="email" class="form-control" value=" @parrot.fr">
+        <input type="email" name="email" id="email" class="form-control" value=" @parrot.fr" required>
         </div>
         <div class="col">
             <label for="password" class="form-label">Mot de passe</label>
@@ -65,7 +65,30 @@ if(isset($_POST['addEmploye'])){
     </div>
 </div>
 </form>
+<script>
+//Fonction qui permet de transformer les saisies (1ere lettre majuscule, le reste en minuscule)
+const firstNameInput = document.getElementById('first_name');
+const lastNameInput = document.getElementById('last_name');
 
+const formatNameInput = (inputElement) => {
+    const inputValue = inputElement.value.trim();
+    const words = inputValue.split(' ');
+
+const formattedWords = words.map(word => {
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+});
+    inputElement.value = formattedWords.join(' ');
+};
+
+firstNameInput.addEventListener('blur', () => {
+    formatNameInput(firstNameInput);
+});
+
+lastNameInput.addEventListener('blur', () => {
+    formatNameInput(lastNameInput);
+});
+
+</script>
 <?php
 require_once('templates/footer.php');
 ?>

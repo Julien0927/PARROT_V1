@@ -94,8 +94,8 @@ if($car) {
   <?php }else{ ?>
     <div class="row text-center">
       <h1>Voiture introuvable</h1>
+      
     </div>
-    
     <?php } 
     
 require_once('del_car.php');

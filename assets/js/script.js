@@ -36,15 +36,13 @@ modeleInput.addEventListener('blur', () => {
 
 //Fonction qui permet de normaliser un numero de telephone
 const phoneInput = document.getElementById('phone');
-
 phoneInput.addEventListener('input', () => {
-    let phoneNumber = phoneInput.value.replace(/\D/g, ''); 
+    let phoneNumber = phoneInput.value.replace(/\D/g, ''); // Supprime tous les caractères non numériques
 
     if (phoneNumber.length > 10) {
-        phoneNumber = phoneNumber.slice(0, 10); 
+        phoneNumber = phoneNumber.slice(0, 10); // Si le numéro dépasse 10 chiffres, tronque-le à 10 chiffres
     }
-
-    phoneInput.value = phoneNumber.replace(/^(0|)[1-9]([-. ]?[0-9]{2}){4}$/);
+    phoneInput.value = phoneNumber.replace(/(\d{2})(?=\d{2})/g, '$1 ');
 });
 
 //Fonction qui permet de gérer les erreurs de saisie d'année
@@ -104,29 +102,33 @@ refreshButton.addEventListener('click',  (e) => {
 });
 }*/
 //Fonction qui permet de filtrer les véhicules
-const filtre = document.getElementById('filter-form')
-filtre.addEventListener('submit', (e) => {
+const filtre = document.getElementById('filter-form');
+
+filtre.addEventListener('submit', async (e) => {
     e.preventDefault(); // Empêche la soumission du formulaire par défaut
 
     const prix = document.getElementById('prix').value;
     const kilometre = document.getElementById('kilometre').value;
     const annee = document.getElementById('annee').value;
 
-    const xhr = new XMLHttpRequest();
+    try {
+        const response = await fetch('filter.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `prix=${prix}&kilometre=${kilometre}&annee=${annee}`,
+        });
 
-    // Spécifiez la méthode et l'URL du script PHP de traitement côté serveur.
-    xhr.open('POST', 'filter.php', true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-    // Configurez la fonction de rappel pour gérer la réponse AJAX.
-    xhr.onreadystatechange =  () => {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            // Mettez à jour le contenu de la division "results" avec les données filtrées.
-            document.getElementById('results').innerHTML = xhr.responseText;
+        if (response.ok) {
+            const data = await response.text();
+            document.getElementById('results').innerHTML = data;
+        } else {
+            console.error('La requête a échoué avec le statut :', response.status);
         }
-    };
-
-    // Envoyez la requête AJAX avec les données du formulaire.
-    xhr.send(`prix=${prix}&kilometre=${kilometre}&annee=${annee}`);
+    } catch (error) {
+        console.error('Une erreur s\'est produite :', error);
+    }
 });
+
 });
