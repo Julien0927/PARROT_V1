@@ -6,7 +6,8 @@ $errors = [];
 $messages = [];
 $testimony = getTemoignage($pdo);
 ?>
-<h1 class="text-center">Témoignages clients reçus</h1>
+<h1 class="text-center">Témoignages</h1>
+<h2 class="text-center">Envoyés par les clients</h2>
 <div class="container">
   <div class="row">
     <?php 
@@ -21,6 +22,7 @@ $testimony = getTemoignage($pdo);
               <form method="post">
                   <input type="hidden" name="temoignages_id" value="<?= $testimony['id']; ?>">
                   <?php if(!$isApproved){?>
+                    <?php addCSRFTokenToForm(); ?>
                   <button type="submit" name="approveTemoignage[<?= $testimony['id']; ?>]" class="btn btn-success">À approuver</button>
                   <?php } ?>
                   <?php addCSRFTokenToForm(); ?>
@@ -29,9 +31,11 @@ $testimony = getTemoignage($pdo);
             </div>
           </div>
         </div>
+       
         <?php } ?>
   </div>
 </div>
+
 <?php
 foreach($testimony as $testimony){
 if (isset($_POST['deleteTemoignage'])){
@@ -46,7 +50,7 @@ if (isset($_POST['deleteTemoignage'])){
      }?>                 
      
 <?php } 
-
-require_once('add_temoignage.php');
+require_once('temoignage_employe.php');
+require_once('add_temoignage_employe.php');
 require_once('templates/footer.php');
       

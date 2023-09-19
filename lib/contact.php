@@ -10,7 +10,7 @@ function getContactById(PDO $pdo, int $id){
   
   // Fonction qui permet de tout récupérer (page d'accueil)
   function getContact(PDO $pdo){
-    $sql = 'SELECT * FROM contact';
+    $sql = 'SELECT * FROM contact ORDER BY id DESC';
     $query = $pdo->prepare($sql);
     $query->execute();
     return $query->fetchAll();

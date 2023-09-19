@@ -64,7 +64,7 @@ if(isset($_POST['saveFormAuto'])){
         <div class="row align-items-center">
             <div class="col"> 
                 <label for="email" class="form-label">Email</label>
-                <input type="email" name="email" id="email" class="form-control">
+                <input type="email" name="email" id="email" class="form-control" required>
             </div>
             <div class="col">
                 <label for="phone" class="form-label">Téléphone</label>
@@ -85,6 +85,41 @@ if(isset($_POST['saveFormAuto'])){
     </div>
 </div>
 </form>
+<script>
+    //Fonction qui permet de transformer les saisies (1ere lettre majuscule, le reste en minuscule)
+const firstNameInput = document.getElementById('first_name');
+const lastNameInput = document.getElementById('last_name');
+
+const formatNameInput = (inputElement) => {
+    const inputValue = inputElement.value.trim();
+    const words = inputValue.split(' ');
+
+const formattedWords = words.map(word => {
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+});
+    inputElement.value = formattedWords.join(' ');
+};
+
+firstNameInput.addEventListener('blur', () => {
+    formatNameInput(firstNameInput);
+});
+
+lastNameInput.addEventListener('blur', () => {
+    formatNameInput(lastNameInput);
+});
+
+//Fonction qui permet de normaliser un numero de telephone
+const phoneInput = document.getElementById('phone');
+phoneInput.addEventListener('input', () => {
+    let phoneNumber = phoneInput.value.replace(/\D/g, ''); // Supprime tous les caractères non numériques
+
+    if (phoneNumber.length > 10) {
+        phoneNumber = phoneNumber.slice(0, 10); // Si le numéro dépasse 10 chiffres, tronque-le à 10 chiffres
+    }
+    phoneInput.value = phoneNumber.replace(/(\d{2})(?=\d{2})/g, '$1 ');
+});
+
+</script>
 
 <?php 
 require_once('templates/footer.php');

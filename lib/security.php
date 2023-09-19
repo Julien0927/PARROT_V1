@@ -1,7 +1,7 @@
 <?php
 
 //Définition d'un gestionnaire d'erreur global
-/**set_error_handler(function ($errno, $errstr, $errfile, $errline) {
+set_error_handler(function ($errno, $errstr, $errfile, $errline) {
 	echo "Nous sommes désolés, un problème vient de survenir :/ \nNous vous invitons à revenir plus tard." . PHP_EOL;
 	if ($errno === E_WARNING)
 		exit();
@@ -10,15 +10,25 @@ restore_error_handler();
 
 //Définition d'un gestionnaire d'exception global
 set_exception_handler(function(Exception $e){
-	echo 'Une erreur a été détectée. Nous mettons fin au programme.' .$e->getMessage() . PHP_EOL;
-		die;
+	echo 'Une exception a été détectée. Nous mettons fin au programme.' .$e->getMessage() . PHP_EOL;
+		exit();
 });
-restore_exception_handler();*/
+restore_exception_handler();
 
-//Fonction pour nettoyer les entrées utilisateurs
-/**function sanitizeUserInput($input) {
-	return htmlspecialchars(trim($input), ENT_QUOTES, 'UTF-8');
-}*/
+// Fonction pour nettoyer les entrées utilisateur
+function sanitizeUserInput($input) {
+    return htmlspecialchars(trim($input), ENT_QUOTES, 'UTF-8');
+}
+
+// Nettoyer toutes les données POST
+foreach ($_POST as $key => $value) {
+    $_POST[$key] = sanitizeUserInput($value);
+}
+
+// Nettoyer toutes les données GET (si nécessaire)
+foreach ($_GET as $key => $value) {
+    $_GET[$key] = sanitizeUserInput($value);
+}
 // Fonction pour générer un jeton CSRF
 function generateCSRFToken() {
     if (empty($_SESSION['csrf_token'])) {

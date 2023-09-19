@@ -19,7 +19,7 @@ $comment = [
         if (empty($name) || empty($comment) || empty($note)) {
         $errors[] = 'Tous les champs sont obligatoires.';
     } else {
-   $res=saveTemoignage($pdo, $_POST['name'], $_POST['comment'], $_POST['note']);
+   $res=saveTemoignage($pdo, $name, $comment, $note);
     if($res){
         $messages[] = 'Votre commentaire a bien été enregistrée, en attente de validation par notre équipe';
     } else {
@@ -36,13 +36,9 @@ $comment = [
     }
 ?>
 <?php 
-    if(isset($_SESSION['user']) && $_SESSION['user']['roles'] === 'Employe'){?>
-      <h3 class="text-center mt-3">Partagez vos retours clients</h3>
-  <?php } else {?>
-        <h1 class="text-center">Faites nous part de votre expérience</h1>
-  <?php } ?>
+   
 
-<?php foreach($messages as $message) {?>
+ foreach($messages as $message) {?>
     <div class="alert alert-success">
         <?=$message;?>
     </div>
@@ -62,6 +58,7 @@ $comment = [
         <label for="comment" class="form-label">Votre commentaire</label>
         <input type="text"  name="comment" id="comment" class="form-control" value="<?=$comment['comment'];?>">
     </div>
+        <?php addCSRFTokenToForm(); ?>    
         <input type="submit" value="Soumettre" name="saveTemoignage" class="btn btn-primary mx-5 px-5">
     </form> 
     <?php } else { ?>
@@ -91,8 +88,8 @@ $comment = [
                 <label for="star5" title="5 étoiles"><span class="star"><i class="fas fa-star"></i></span></label>
             </div>
     </div>
-        <?php addCSRFTokenToForm(); ?>    
-        <input type="submit" value="Soumettre" name="saveTemoignage" class="btn btn-primary px-5 mx-5">
+    <?php addCSRFTokenToForm(); ?>    
+    <input type="submit" value="Soumettre" name="saveTemoignage" class="btn btn-primary px-5 mx-5">
 </form>
 <?php } ?>
 <script>
