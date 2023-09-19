@@ -1,9 +1,10 @@
 <?php
+
 //Définition d'un gestionnaire d'erreur global
 /**set_error_handler(function ($errno, $errstr, $errfile, $errline) {
 	echo "Nous sommes désolés, un problème vient de survenir :/ \nNous vous invitons à revenir plus tard." . PHP_EOL;
 	if ($errno === E_WARNING)
-		die;
+		exit();
 });
 restore_error_handler();
 
