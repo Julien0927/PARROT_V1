@@ -70,6 +70,7 @@ if (isset($_POST['saveCar'])) {
     ];
 }
     }
+    
 }
 
 ?>
@@ -85,7 +86,8 @@ if (isset($_POST['saveCar'])) {
     <div class="alert alert-danger">
         <?=$error;?>
     </div>
-<?php } ?>
+<?php 
+} ?>
 
 <form method="POST" enctype="multipart/form-data" >
     <div class="container mt-3">
@@ -135,6 +137,7 @@ if (isset($_POST['saveCar'])) {
         </div>
     </div>
 </form>
+
 <script>
 //Fonction qui permet de transformer les saisies (1ere lettre majuscule, le reste en minuscule)
 const marqueInput = document.getElementById('marque')

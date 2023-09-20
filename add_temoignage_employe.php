@@ -18,7 +18,7 @@ $comment = [
         if (empty($name) || empty($comment)) {
         $errors[] = 'Tous les champs sont obligatoires.';
     } else {
-   $resultat=saveTemoignageEmploye($pdo, $name, $comment);
+    $resultat=saveTemoignageEmploye($pdo, $name, $comment);
     if($resultat){
         $messages[] = 'Votre retour client a bien été enregistrée';
     } else {
@@ -41,12 +41,12 @@ $comment = [
     <div class="alert alert-success">
         <?=$message;?>
     </div>
-<?php } ?>
-<?php foreach($errors as $error) {?>
+    <?php } ?>
+    <?php foreach($errors as $error) {?>
     <div class="alert alert-danger">
         <?=$error;?>
     </div>
-<?php } ?>
+    <?php } ?>
 
     <form method="POST" enctype="multipart/form-data" >
     <div class="mb-2 px-5">
@@ -75,7 +75,5 @@ inputElement.value = formattedWords.join(' ');
 nameInput.addEventListener('blur', () => {
 formatNameInput(nameInput);
 });
-
-
 </script>
 

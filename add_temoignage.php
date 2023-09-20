@@ -14,7 +14,6 @@ $comment = [
         $name = $_POST['name'];
         $comment = $_POST['comment'];
         $note = $_POST['note'];
-        
 
         if (empty($name) || empty($comment) || empty($note)) {
         $errors[] = 'Tous les champs sont obligatoires.';
@@ -25,19 +24,16 @@ $comment = [
     } else {
         $errors[] = 'Votre commentaire n\'a pas pu été sauvegardée';
     }
-   
     
     $comment = [
         'name' => $_POST['name'],
         'comment' => $_POST['comment'],
         'note' => $_POST['note'],
     ];
-}
     }
+}
 ?>
 <?php 
-   
-
  foreach($messages as $message) {?>
     <div class="alert alert-success">
         <?=$message;?>
@@ -48,7 +44,7 @@ $comment = [
         <?=$error;?>
     </div>
 <?php } ?>
-<?php if(isset($_SESSION['user']) && $_SESSION['user']['roles'] === 'Employe'){?>
+<?php /**if(isset($_SESSION['user']) && $_SESSION['user']['roles'] === 'Employe'){?>
     <form method="POST" enctype="multipart/form-data" >
     <div class="mb-2 px-5">
         <label for="name" class="form-label">Votre nom</label>
@@ -61,7 +57,8 @@ $comment = [
         <?php addCSRFTokenToForm(); ?>    
         <input type="submit" value="Soumettre" name="saveTemoignage" class="btn btn-primary mx-5 px-5">
     </form> 
-    <?php } else { ?>
+    <?php } else {*/ ?>
+    <h1 class="text-center">Partagez votre expérience</h1>
     <form action="<?= $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data" >
         <div class="mb-2 px-5">
             <label for="name" class="form-label">Votre nom</label>
@@ -73,7 +70,7 @@ $comment = [
         </div>
     <div class="mb-3 px-5">
         <div class="form-label">
-        <label for="note" >Noter votre expérience</label>
+            <label for="note" >Noter votre expérience</label>
         </div>
             <div class="rating">
                 <input type="radio" id="star1" name="note" value="1" <?php if ($comment['note'] == 1) echo 'checked'; ?>>
@@ -90,8 +87,8 @@ $comment = [
     </div>
     <?php addCSRFTokenToForm(); ?>    
     <input type="submit" value="Soumettre" name="saveTemoignage" class="btn btn-primary px-5 mx-5">
-</form>
-<?php } ?>
+    </form>
+<?php /**}*/ ?>
 <script>
     const nameInput = document.getElementById('name');
     const formatNameInput = (inputElement) => {
@@ -106,8 +103,6 @@ const formattedWords = words.map(word => {
     nameInput.addEventListener('blur', () => {
     formatNameInput(nameInput);
 });
-
-
 </script>
 <?php 
 require_once('templates/footer.php');
