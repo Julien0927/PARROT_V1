@@ -1,7 +1,5 @@
 <?php
 require_once('templates/header.php');
-//require_once('lib/user.php');
-//require_once ('lib/form_car.php');
 require_once ('lib/contact.php');
 
 $id = (int) $_GET['id'];

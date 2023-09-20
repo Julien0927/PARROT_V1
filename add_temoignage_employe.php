@@ -14,7 +14,6 @@ $comment = [
         $name = $_POST['name'];
         $comment = $_POST['comment'];
         
-
         if (empty($name) || empty($comment)) {
         $errors[] = 'Tous les champs sont obligatoires.';
     } else {
@@ -24,7 +23,6 @@ $comment = [
     } else {
         $errors[] = 'Votre commentaire n\'a pas pu été sauvegardée';
     }
-   
     
     $comment = [
         'name' => $_POST['name'],

@@ -1,5 +1,4 @@
 <?php
-
 require_once('templates/header.php');
 require_once('lib/tools.php');
 require_once('lib/service.php');
@@ -28,7 +27,7 @@ if($service) {
     <?php foreach ($description as $key => $description){?>
       <li class="list-group-item"><?=$description ;?></li>
       <?php } ?>
-      <p>*Pour toute demande de devis n'hésitez pas nous contacter</p>
+      <p>*Pour toute demande de devis n'hésitez pas à nous contacter</p>
   </ul>
 </div>
 <?php }else{ ?>

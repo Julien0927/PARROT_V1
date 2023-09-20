@@ -17,9 +17,11 @@ restore_exception_handler();
 
 // Fonction pour nettoyer les entrées utilisateur
 function sanitizeUserInput($input) {
-    return htmlspecialchars(trim($input), ENT_QUOTES, 'UTF-8');
+    if (is_string($input)) {
+        return htmlspecialchars(trim($input), ENT_QUOTES, 'UTF-8');
+    }
+    return $input;
 }
-
 // Nettoyer toutes les données POST
 foreach ($_POST as $key => $value) {
     $_POST[$key] = sanitizeUserInput($value);

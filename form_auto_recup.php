@@ -15,7 +15,6 @@ if ($formAuto) {
   $email = $formAuto['email'];
   $phone = $formAuto['phone'];
   $message = $formAuto['message'];
-  //$image = $formAuto['image_filename'];
 
 ?>
 

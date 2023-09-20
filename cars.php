@@ -46,7 +46,7 @@ $cars = getCars($pdo);
   const filtre = document.getElementById('filter-form');
 
 filtre.addEventListener('submit', async (e) => {
-    e.preventDefault(); // Empêche la soumission du formulaire par défaut
+    e.preventDefault(); 
 
     const prix = document.getElementById('prix').value;
     const kilometre = document.getElementById('kilometre').value;

@@ -20,9 +20,8 @@ $testimony = getTemoignage($pdo);
               <h5 class="card-title"><?=$testimony['name']; ?></h5>
               <p class="card-text"><?=$testimony['comment']; ?></p>
               <form method="post">
-                  <input type="hidden" name="temoignages_id" value="<?= $testimony['id']; ?>">
-                  <?php if(!$isApproved){?>
-                    <?php addCSRFTokenToForm(); ?>
+                <input type="hidden" name="temoignages_id" value="<?= $testimony['id']; ?>">
+                <?php if(!$isApproved){?>
                   <button type="submit" name="approveTemoignage[<?= $testimony['id']; ?>]" class="btn btn-success">À approuver</button>
                   <?php } ?>
                   <?php addCSRFTokenToForm(); ?>
@@ -31,7 +30,6 @@ $testimony = getTemoignage($pdo);
             </div>
           </div>
         </div>
-       
         <?php } ?>
   </div>
 </div>
@@ -48,7 +46,6 @@ if (isset($_POST['deleteTemoignage'])){
     approveTemoignage($pdo, $temoignages_id);
     header('location: approved_temoignage.php');
      }?>                 
-     
 <?php } 
 require_once('temoignage_employe.php');
 require_once('add_temoignage_employe.php');

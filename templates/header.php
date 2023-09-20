@@ -6,7 +6,6 @@
   require_once('lib/security.php');
 
   $currentPage = basename($_SERVER['SCRIPT_NAME']);
-  
 ?>
 
 <!DOCTYPE html>

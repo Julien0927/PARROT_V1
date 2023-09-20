@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : dim. 17 sep. 2023 à 17:15
+-- Généré le : mer. 20 sep. 2023 à 11:19
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -54,7 +54,9 @@ INSERT INTO `cars` (`id`, `marque`, `modele`, `prix`, `image_filename`, `annee`,
 (126, 'Peugeot', '207 HDi', 4300, NULL, 1998, 155200, 'Airbag, vitres électriques avant/arrière, climatisation, ABS, nombreux rangements.'),
 (127, 'Peugeot', '3008 GT Hybride', 15000, NULL, 2020, 97000, '5 portes, Airbag, vitres électriques avant/arrière, climatisation, ABS, nombreux rangements, sièges 2/3 1/3.'),
 (128, 'Renault', 'Clio 4', 8990, NULL, 2017, 96700, 'Regulateur de vitesse, ABS, ESP, Airbag'),
-(129, 'CITROEN ', 'C-AIRCROSS CONCEPT', 12990, NULL, 2013, 196700, 'Regulateur de vitesse, ABS, ESP, Airbag, banquette 2/3 1/3, vitres teintées à l\'arriere.');
+(129, 'CITROEN ', 'C-AIRCROSS CONCEPT', 12990, NULL, 2013, 196700, 'Regulateur de vitesse, ABS, ESP, Airbag, banquette 2/3 1/3, vitres teintées à l\'arriere.'),
+(193, 'Nissan', 'Gt-r', 16320, NULL, 2016, 151200, 'ABS, Airbag, ESP, régulateur de vitesse, 5 portes'),
+(194, 'Ford', 'Ranger', 30990, NULL, 2021, 23510, 'Full options');
 
 -- --------------------------------------------------------
 
@@ -120,7 +122,15 @@ INSERT INTO `car_images` (`id`, `car_id`, `image_filename`) VALUES
 (247, 129, '650089faaa263-aircross1-jpg'),
 (248, 129, '650089faaa523-aircross2-jpg'),
 (249, 129, '650089faaa7a1-aircross3-jpg'),
-(250, 129, '650089faaa99a-aircross4-jpg');
+(250, 129, '650089faaa99a-aircross4-jpg'),
+(279, 193, '65084bdc08983-nissan1-jpg'),
+(280, 193, '65084bdc08be2-nissan2-jpg'),
+(281, 193, '65084bdc0be84-nissan3-jpg'),
+(282, 193, '65084bdc0c1e3-nissan4-jpg'),
+(283, 194, '65084dbd099f1-ford1-jpg'),
+(284, 194, '65084dbd09c4b-ford2-jpg'),
+(285, 194, '65084dbd09e21-ford3-jpg'),
+(286, 194, '65084dbd0a0c1-ford4-jpg');
 
 -- --------------------------------------------------------
 
@@ -143,8 +153,10 @@ CREATE TABLE `contact` (
 
 INSERT INTO `contact` (`id`, `first_name`, `last_name`, `email`, `phone`, `message`) VALUES
 (1, 'alban', 'Décole', 'alban@mail.com', '06.25.25.23.32', 'bonjour,\r\n\r\nj\'ai un probleme de durite'),
-(2, 'rgerge', 'zrgerg', 'rgerg@gm.fr', '0957603720', 'eergethge etheh rther ghery hergh r'),
-(3, 'Pascal', 'Miflon', 'scalpa@gt.fr', '06.32.36.63.52', 'Bonjour, \r\nserait-il possible d\'avoir un devis pour une distribution sur une Dolorean?\r\nMerci');
+(3, 'Pascal', 'Miflon', 'scalpa@gt.fr', '06.32.36.63.52', 'Bonjour, \r\nserait-il possible d\'avoir un devis pour une distribution sur une Dolorean?\r\nMerci'),
+(4, 'Gael', 'Jacquemin', 'jacm@example.com', '06 54 45 65 56', 'Bonjour,\r\nJe voudrais connaitre le tarif pour changer 4 pneus de dimensions 205*55*16.\r\nMerci d\'avance pour votre retour.'),
+(5, 'Sandrine', 'Ronguin', 'ronguin@example.com', '02 54 65 98 84', 'Bonjour,\r\n\r\nPourriez-vous me proposer un RDV pour changer des plaquettes de freins ainsi que le tarif s&#039;il vous plait.\r\nMerci d&#039;avance pour votre retour.\r\nCordialement.'),
+(6, 'Thr', 'Mlkml', 'rgjekg@gt.fr', '05 65 56 54 65', 'gtkhthklrtkjrhn');
 
 -- --------------------------------------------------------
 
@@ -173,7 +185,9 @@ INSERT INTO `formauto` (`id`, `cars_id`, `first_name`, `last_name`, `email`, `ph
 (75, 128, 'michel', 'savate', 'savate@gh.fr', '0957603720', 'rzgrg thh\'th \'th\'tgh \'th\' th'),
 (76, 128, 'michel', 'savate', 'savate@gh.fr', '0957603720', 'rzgrg thh\'th \'th\'tgh \'th\' th'),
 (77, 128, 'michel', 'savate', 'savate@gh.fr', '0957603720', 'rzgrg thh\'th \'th\'tgh \'th\' th'),
-(78, 125, 'Kevin', 'Costner', 'K.costner@acteur.fr', '07.32.52.63.98', 'Bonjour, \r\nCe véhicule est-il toujours disponible?\r\nCordialement.');
+(78, 125, 'Kevin', 'Costner', 'K.costner@acteur.fr', '07.32.52.63.98', 'Bonjour, \r\nCe véhicule est-il toujours disponible?\r\nCordialement.'),
+(79, 193, 'Kevin', 'Maschin', 'keke@turbo.fr', '06 06 25 23 32', 'Bonjour, \r\nVotre voiture est-elle équipée pour aller sur circuit?\r\nMerci.'),
+(80, 193, 'Mimi', 'Rover', 'roland@mail.com', '21 56 54 54 54', 'egkjdhrjtkhkjrhy');
 
 -- --------------------------------------------------------
 
@@ -220,7 +234,7 @@ CREATE TABLE `services` (
 
 INSERT INTO `services` (`id`, `name`, `description`, `image`) VALUES
 (25, 'Entretien et révision', 'Vidange avec remplacement des filtres \r\nRemplacement des bougies \r\nContrôle des niveaux de liquide \r\nVérification des pneus \r\nRéglage des freins', '64f5a5104d319-entretien-jpg'),
-(26, 'Réparation', 'Mécanique\r\nElectrique - Electronique\r\nSystème de sécurité\r\nPneumatique\r\n', '64f5a572092fb-reparation-jpg'),
+(26, 'Réparation', 'Mécanique Electrique - Electronique Système de sécurité Pneumatique', '64f5a572092fb-reparation-jpg'),
 (27, 'Carrosserie et peinture', 'Le remplacement. \r\nLe débosselage ou redressage. \r\nLe banc de redressage. \r\nLe banc de mesure ou marbre.\r\n Le masticage. \r\nLe marouflage. \r\nLa peinture.', '64f5a5add13e5-carroserie-jpg');
 
 -- --------------------------------------------------------
@@ -243,15 +257,33 @@ CREATE TABLE `temoignages` (
 
 INSERT INTO `temoignages` (`id`, `name`, `comment`, `note`, `approved`) VALUES
 (4, 'André', 'Nous avons été très bien accueillis, le tarif a été sans surprise. Je recommande', 5, 1),
-(5, 'Xavier', 'Passé à l\'improviste dans le garage PARROT mars 2023, accueil chaleureux et professionnel de Jérémy ayant débouché sur une proposition d\'achat d\'une voiture (C5 aircross) devant arriver en fin de semaine. Voiture impeccable, conforme à la description. Je recommande  sans réserve.', 5, 1),
-(6, 'Nicole', 'Très professionnel...accueil super...je recommande vivement', 4, 1),
 (11, 'valerie', 'J\'adore ce garagiste', 5, 1),
 (20, 'Laurent', 'Garagiste très expérimenté et sans surprise au moment du règlement, je recommande', 5, 1),
 (21, 'Pierre', 'Délai un peu long mais dû à un problème de livraison, sinon globalement satisfait', 3, 1),
-(22, 'JP', 'Le carter de mon bloc n\'a pas été remis suite à intervention, manque de professionnalisme', 4, 1),
 (23, 'michel', '\"Merci de votre intervention de qualité, je vous recommanderai\", voici le retour d\'un client satisfait.', 4, 1),
-(24, 'Durand', 'L\'accueil est très sympathique, réparation nickel et pas de mauvaise surprise au moment du paiement, je recommande.', 1, 1),
-(25, 'Henry', 'Tres bon garagiste, je recommande vivement', 1, 0);
+(25, 'Henry', 'Tres bon garagiste, je recommande vivement', 1, 0),
+(26, 'Lecomte', 'Je suis agréablement surpris par ce garage qui, de plus, donne de bons conseils pour entretenir son véhicule.', 2, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `temoignages_employe`
+--
+
+CREATE TABLE `temoignages_employe` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `comment` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `temoignages_employe`
+--
+
+INSERT INTO `temoignages_employe` (`id`, `name`, `comment`) VALUES
+(1, 'Michel', '&quot;Vous êtes drolement efficace et pas cher ici&quot; M. Hervé concernant l&#039;entretien de sa 4L'),
+(2, 'Lotin', '&quot;Vous êtes efficace et pas cher ici!!&quot; Retour de M. Hervé concernant l&#039;entretien de sa 4L.'),
+(22, 'Giftui', 'gyukyuk');
 
 -- --------------------------------------------------------
 
@@ -274,10 +306,13 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `email`, `password`, `first_name`, `last_name`, `roles`) VALUES
 (3, 'michel@vin.com', '$2y$10$9mQNB/jlcn2CFcTS/HgVbuKKuBcAAc.fUSROFjnuE1tVXOEKw9DLy', 'michel', 'vin', 'Employe'),
-(4, 'vincent.parrot@example.com', '$2y$10$M/HIzYCoztNM6DZBrHhgDuEaIsgQt9F22hj7DfLSpUK9GqafwCw06', 'Vincent', 'Parrot', 'Admin'),
 (5, 'sapin@example.com', '$2y$10$6Dr9kVoXPb1xvtbad03g5OPa160dQdlzmaWC2gfIZrmsmI1NiKLya', 'gerald', 'sapin', 'Visiteur'),
-(13, 'grivois@parrot.fr', '$2y$10$UBqT9l2stG9KtQOMDfJuAORapztJTCneIvwzho./o4VtPhMqbHgeG', 'Jean-Pierre', 'Grivois', 'Employe'),
-(14, 'plantin@example.com', '$2y$10$Avsxvj7GhvzbiR2UeeetGeYN.5fd83MDu6fmgFfNTT2cKKfw/6E/m', 'Yvonne ', 'Plantin', 'Visiteur');
+(14, 'plantin@example.com', '$2y$10$Avsxvj7GhvzbiR2UeeetGeYN.5fd83MDu6fmgFfNTT2cKKfw/6E/m', 'Yvonne ', 'Plantin', 'Visiteur'),
+(22, 'a.figan@parrot.fr', '$2y$10$ast0N/s0mcdgj/gqBHZdg.n/MFDT7WwGjPN8eq6Emdcysi5aO0kua', 'Alain', 'Figan', 'Employe'),
+(24, 'v.parrot@parrot.fr', '$2y$10$jAOehy/9VaVNmuCbskbTduV4qk6TpPEDnIeU04zIHzlODSiLFhQ4u', 'Vincent', 'Parrot', 'Admin'),
+(25, 'h.michel@parrot.fr', '$2y$10$Xfmn0uEazuV5kooavbUJfOsoppBzD/7S9MWmv2PdpYcf8UAKUF7UG', 'Henri', 'Michel', 'Employe'),
+(26, 'h.michel@parrot.fr', '$2y$10$w6jWLbGafPR60oJluz1S/O31FufPOdp8/sl8Be631oafOM/hxkOvq', 'Henri', 'Michel', 'Employe'),
+(27, 'm.larose@parrot.fr', '$2y$10$2RoaIxWpx2ERtvSSofgNPu0uBaZlQu2SHiUAPZByvBO2ggcFwJBGy', 'Miguel', 'Larose', 'Employe');
 
 --
 -- Index pour les tables déchargées
@@ -328,6 +363,12 @@ ALTER TABLE `temoignages`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `temoignages_employe`
+--
+ALTER TABLE `temoignages_employe`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `users`
 --
 ALTER TABLE `users`
@@ -341,25 +382,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `cars`
 --
 ALTER TABLE `cars`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=193;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=223;
 
 --
 -- AUTO_INCREMENT pour la table `car_images`
 --
 ALTER TABLE `car_images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=279;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=305;
 
 --
 -- AUTO_INCREMENT pour la table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `formauto`
 --
 ALTER TABLE `formauto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT pour la table `open_hours`
@@ -371,19 +412,25 @@ ALTER TABLE `open_hours`
 -- AUTO_INCREMENT pour la table `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT pour la table `temoignages`
 --
 ALTER TABLE `temoignages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
+--
+-- AUTO_INCREMENT pour la table `temoignages_employe`
+--
+ALTER TABLE `temoignages_employe`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- Contraintes pour les tables déchargées

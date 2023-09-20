@@ -4,7 +4,7 @@ require_once('lib/car.php');
 require_once('lib/form_car.php');
 require_once('lib/contact.php');
 
-$cars = getCars($pdo/*, _HOME_CARS_LIMIT_*/);
+$cars = getCars($pdo);
 $formAutos = getFormAuto($pdo);
 $contact = getContact($pdo);
 

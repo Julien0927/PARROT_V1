@@ -1,5 +1,4 @@
 <?php
-
 require_once('templates/header.php');
 
 if(!isset ($_SESSION['user'])){
@@ -8,7 +7,6 @@ if(!isset ($_SESSION['user'])){
 
 require_once('lib/tools.php');
 require_once('lib/car.php');
-
 
 $errors = [];
 $messages = [];
@@ -19,7 +17,6 @@ $car = [
     'annee' =>'',
     'kilometre' =>'',
     'equipements' =>'',
-    
 ];
 
 if (isset($_POST['saveCar'])) {
@@ -59,7 +56,6 @@ if (isset($_POST['saveCar'])) {
         $errors[] = 'La voiture n\'a pas été sauvegardée';
     }
     
-    
     $car = [
         'marque' => $_POST['marque'],
         'modele' => $_POST['modele'],
@@ -70,13 +66,10 @@ if (isset($_POST['saveCar'])) {
     ];
 }
     }
-    
 }
-
 ?>
 
 <h1 class="row mx-5">Ajouter une voiture</h1>
-
 <?php foreach($messages as $message) {?>
     <div class="alert alert-success">
         <?=$message;?>
@@ -88,7 +81,6 @@ if (isset($_POST['saveCar'])) {
     </div>
 <?php 
 } ?>
-
 <form method="POST" enctype="multipart/form-data" >
     <div class="container mt-3">
         <div class="row align-items-center">

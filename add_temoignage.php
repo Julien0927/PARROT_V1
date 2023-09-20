@@ -33,6 +33,7 @@ $comment = [
     }
 }
 ?>
+        <h1 class="text-center">Partagez votre expérience</h1>
 <?php 
  foreach($messages as $message) {?>
     <div class="alert alert-success">
@@ -44,21 +45,7 @@ $comment = [
         <?=$error;?>
     </div>
 <?php } ?>
-<?php /**if(isset($_SESSION['user']) && $_SESSION['user']['roles'] === 'Employe'){?>
-    <form method="POST" enctype="multipart/form-data" >
-    <div class="mb-2 px-5">
-        <label for="name" class="form-label">Votre nom</label>
-        <input type="text" name="name" id="name" class="form-control" value="<?=$comment['name'];?>">
-    </div>
-    <div class="mb-3 px-5">
-        <label for="comment" class="form-label">Votre commentaire</label>
-        <input type="text"  name="comment" id="comment" class="form-control" value="<?=$comment['comment'];?>">
-    </div>
-        <?php addCSRFTokenToForm(); ?>    
-        <input type="submit" value="Soumettre" name="saveTemoignage" class="btn btn-primary mx-5 px-5">
-    </form> 
-    <?php } else {*/ ?>
-    <h1 class="text-center">Partagez votre expérience</h1>
+
     <form action="<?= $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data" >
         <div class="mb-2 px-5">
             <label for="name" class="form-label">Votre nom</label>
@@ -88,7 +75,7 @@ $comment = [
     <?php addCSRFTokenToForm(); ?>    
     <input type="submit" value="Soumettre" name="saveTemoignage" class="btn btn-primary px-5 mx-5">
     </form>
-<?php /**}*/ ?>
+
 <script>
     const nameInput = document.getElementById('name');
     const formatNameInput = (inputElement) => {

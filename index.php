@@ -6,7 +6,7 @@ require_once('lib/open_close.php');
 require_once('lib/temoignage.php');
 
 $cars = getCars($pdo, _HOME_CARS_LIMIT_);
-$service = getService($pdo/*, _HOME_CARS_LIMIT_*/);
+$service = getService($pdo);
 $testimony = getTemoignage($pdo, );
   if(isset($_SESSION['user']) && $_SESSION['user']['roles'] === 'Employe'){?>
     <div class="session_effect">

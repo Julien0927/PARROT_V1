@@ -7,7 +7,6 @@ $errors = [];
 $messages = [];
 
 $cars_id =(int) $_GET['id'];
-
 $car= getCarById($pdo, $cars_id);
 
 if(isset($_POST['saveFormAuto'])){
@@ -31,7 +30,6 @@ if(isset($_POST['saveFormAuto'])){
 }
 }
 ?>
-
 <h3 class="text-center mt-5">Pour plus d'informations,<br> n'hésitez pas à nous contacter via le formulaire de contact ci-dessous ou par téléphone au 06.12.34.56.78</h3>
 <h3 class="text-center"> <?= $car['marque']?> <?= $car['modele'] ?> de <?= $car['annee'] ?> </h3>
 
@@ -111,14 +109,13 @@ lastNameInput.addEventListener('blur', () => {
 //Fonction qui permet de normaliser un numero de telephone
 const phoneInput = document.getElementById('phone');
 phoneInput.addEventListener('input', () => {
-    let phoneNumber = phoneInput.value.replace(/\D/g, ''); // Supprime tous les caractères non numériques
+    let phoneNumber = phoneInput.value.replace(/\D/g, ''); 
 
     if (phoneNumber.length > 10) {
-        phoneNumber = phoneNumber.slice(0, 10); // Si le numéro dépasse 10 chiffres, tronque-le à 10 chiffres
+        phoneNumber = phoneNumber.slice(0, 10); 
     }
     phoneInput.value = phoneNumber.replace(/(\d{2})(?=\d{2})/g, '$1 ');
 });
-
 </script>
 
 <?php 

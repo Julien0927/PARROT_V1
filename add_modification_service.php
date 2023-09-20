@@ -47,7 +47,6 @@ if (isset ($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != ''){
         $errors[] = 'La prestation n\'a pas été sauvegardée';
     }
     
-    
     $service = [
         'name' =>'',
         'description' =>'',
@@ -56,9 +55,7 @@ if (isset ($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != ''){
     }
 }
 ?>
-
 <h2 class="row px-5">Ajouter une prestation</h2>
-
 <?php foreach($messages as $message) {?>
     <div class="alert alert-success">
         <?=$message;?>
@@ -86,6 +83,7 @@ if (isset ($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != ''){
             <div class="col">
         <label for="file" type="form-label">Image</label>
         <input type="file" name="file" id="file">
+        <?php addCSRFTokenToForm(); ?>
         <input type="submit" value="Enregistrer" name="saveService" class="btn btn-primary mx-5 px-5 ">
             </div>
         </div>
@@ -93,7 +91,6 @@ if (isset ($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != ''){
 </form>
 
 <h2 class="row px-5 mt-5">Modifier une prestation</h2>
-
 <?php 
 $updateService = getService($pdo/*, _HOME_CARS_LIMIT_*/);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -112,6 +109,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 ?>
 <div class="row mx-4">
+<?php foreach($messages as $message) {?>
+    <div class="alert alert-success">
+        <?=$message;?>
+    </div>
+<?php } ?>
+<?php foreach($errors as $error) {?>
+    <div class="alert alert-danger">
+        <?=$error;?>
+    </div>
+<?php } ?>
 <?php foreach ($updateService as $updateService){ ?>
     <article class="mt-3 col-md-4">
         <div class="card_services">
@@ -136,8 +143,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         </div>
     </article>
-<?php };
-?>
+<?php };?>
 <script>
 const serviceInput = document.getElementById('name');
 
@@ -154,7 +160,6 @@ const formattedWords = words.map(word => {
 serviceInput.addEventListener('blur', () => {
     formatNameInput(serviceInput);
 });
-
 </script>
 
 <?php 
