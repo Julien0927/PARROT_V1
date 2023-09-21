@@ -3,8 +3,8 @@ require_once('lib/car.php');
 require_once('lib/config.php');
     
     try {
-        $pdo = new PDO('mysql:host=localhost; dbname=garage_parrot','root', '' );
-        } 
+        $pdo = new PDO('mysql:host=mysql-julienvarachas.alwaysdata.net; dbname=julienvarachas_garage-parrot;port=3306; charset=utf8mb4','327887', 'T0mEmm@1114');
+    } 
     catch (PDOException $e){
             echo 'erreur de connexion à la base de données' . $e -> getMessage();
         }
