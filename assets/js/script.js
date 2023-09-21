@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-/*
+
 //Fonction qui permet de transformer les saisies (1ere lettre majuscule, le reste en minuscule)
 const firstNameInput = document.getElementById('first_name');
 const lastNameInput = document.getElementById('last_name');
@@ -91,21 +91,11 @@ kilometreInput.addEventListener('input', () => {
     kilometreInput.value = valKilometre; 
 });
 
-
-/*function refresh(){
-const refreshButton = document.getElementById('refresh');
-
-// Ajoutez un gestionnaire d'événements au clic sur le bouton
-refreshButton.addEventListener('click',  (e) => {
-    // Rafraîchissez la page
-    location.reload();
-});
-}*/
 //Fonction qui permet de filtrer les véhicules
 const filtre = document.getElementById('filter-form');
 
 filtre.addEventListener('submit', async (e) => {
-    e.preventDefault(); // Empêche la soumission du formulaire par défaut
+    e.preventDefault(); 
 
     const prix = document.getElementById('prix').value;
     const kilometre = document.getElementById('kilometre').value;

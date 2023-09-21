@@ -92,7 +92,7 @@ if (isset ($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != ''){
 
 <h2 class="row px-5 mt-5">Modifier une prestation</h2>
 <?php 
-$updateService = getService($pdo/*, _HOME_CARS_LIMIT_*/);
+$updateService = getService($pdo);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['updateService'])) {
         $id = $_POST['id'];
@@ -144,6 +144,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </article>
 <?php };?>
+
 <script>
 const serviceInput = document.getElementById('name');
 

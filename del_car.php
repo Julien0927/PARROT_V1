@@ -15,7 +15,6 @@ if(isset($_SESSION['user']) && $_SESSION['user']['roles'] === 'Employe'||
         $messages[]= 'Le véhicule a bien été supprimé';
       } else {
         $messages[]= 'Le véhicule a bien été supprimé';
-        
       }
     }
       foreach($messages as $message) {?>

@@ -1,5 +1,4 @@
 <?php
-
 require_once('lib/pdo.php');
 session_start();
 

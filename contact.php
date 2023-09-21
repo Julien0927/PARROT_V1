@@ -102,10 +102,10 @@ lastNameInput.addEventListener('blur', () => {
 // Fonction qui permet de normaliser un numéro de téléphone
 const phoneInput = document.getElementById('phone');
 phoneInput.addEventListener('input', () => {
-    let phoneNumber = phoneInput.value.replace(/\D/g, ''); // Supprime tous les caractères non numériques
+    let phoneNumber = phoneInput.value.replace(/\D/g, ''); 
 
     if (phoneNumber.length >= 10) {
-        phoneNumber = phoneNumber.slice(0, 10); // Si le numéro dépasse 10 chiffres, tronque-le à 10 chiffres
+        phoneNumber = phoneNumber.slice(0, 10); 
     }
     phoneInput.value = phoneNumber.replace(/(\d{2})(?=\d{2})/g, '$1 ');
 });

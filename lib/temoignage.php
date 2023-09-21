@@ -70,8 +70,4 @@ function saveTemoignageEmploye(PDO $pdo, string $name, string $comment){
     $query -> execute();
     return $query->fetchAll(PDO::FETCH_ASSOC);
 }
-  
-
-  
-
 ?>

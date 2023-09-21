@@ -84,7 +84,7 @@ if(isset($_POST['saveFormAuto'])){
 </div>
 </form>
 <script>
-    //Fonction qui permet de transformer les saisies (1ere lettre majuscule, le reste en minuscule)
+//Fonction qui permet de transformer les saisies (1ere lettre majuscule, le reste en minuscule)
 const firstNameInput = document.getElementById('first_name');
 const lastNameInput = document.getElementById('last_name');
 
