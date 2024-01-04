@@ -1,22 +1,4 @@
 <?php
-
-
-/** Permet d'ajouter un utilisateur visiteur */
-function addUser(PDO $pdo, string $first_name, string $last_name, string $email, string $password){
-    $sql = "INSERT INTO `users` (`first_name`, `last_name`, `email`, `password`, `roles`) VALUES ( :first_name, :last_name, :email, :password, :roles);";
-    $query = $pdo->prepare($sql);
-
-    $password = password_hash($password, PASSWORD_DEFAULT);
-
-    $role = 'Visiteur';
-    $query -> bindParam(':first_name', $first_name, PDO::PARAM_STR);
-    $query -> bindParam(':last_name', $last_name, PDO::PARAM_STR);
-    $query -> bindParam(':email', $email, PDO::PARAM_STR);
-    $query -> bindParam(':password', $password, PDO::PARAM_STR);
-    $query -> bindParam(':roles', $role, PDO::PARAM_STR);
-        
-    return $query->execute();
-}
 /** Permet d'ajouter un utilisateur employé */
 function addEmploye(PDO $pdo, string $first_name, string $last_name, string $email, string $password){
     $sql = "INSERT INTO `users` (`first_name`, `last_name`, `email`, `password`, `roles`) VALUES ( :first_name, :last_name, :email, :password, :roles);";
@@ -49,10 +31,3 @@ function verifyUserLoginPassword(PDO $pdo, string $email, string $password){
     }
     
 }
-
-
-
-
-
-
-
