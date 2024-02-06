@@ -10,7 +10,7 @@ $cars = getCars($pdo);
   <div class="container">
     <div class="row ">
       <div class="col-md-4">
-        <form method="POST" action="<?=$_SERVER['PHP_SELF'];?>" id='filter-form' class="">
+        <form method="POST" action="<?=$_SERVER['PHP_SELF'];?>" id='filter-form'>
         <label for="prix">Prix maximum :</label>
         <input type="text" id="prix" name="prix">
       </div>

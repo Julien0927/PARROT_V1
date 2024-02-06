@@ -43,7 +43,8 @@
   }
   //Fonction qui permet l'insertion et la sauvegarde d'un nouveau véhicule
   function saveCar(PDO $pdo, string $marque, string $modele, string $prix, array|string $images, int $annee, string $kilometre, string $equipements) {
-    $sql = 'INSERT INTO `cars` (`id`, `marque`, `modele`, `prix`, `annee`, `kilometre`, `equipements`) VALUES (NULL, :marque, :modele, :prix, :annee, :kilometre, :equipements)';
+    $sql = 'INSERT INTO `cars` (`id`, `marque`, `modele`, `prix`, `annee`, `kilometre`, `equipements`)
+     VALUES (NULL, :marque, :modele, :prix, :annee, :kilometre, :equipements)';
     $query = $pdo->prepare($sql);
 
     $query->bindParam(':marque', $marque, PDO::PARAM_STR);

@@ -13,7 +13,9 @@ $comment = [
     if(isset($_POST['saveTemoignage'])){
         $name = $_POST['name'];
         $comment = $_POST['comment'];
-        $note = $_POST['note'];
+
+        isset($_POST['note']) ? $_POST['note'] : '';
+        /*$note = $_POST['note'];*/
 
         if (empty($name) || empty($comment) || empty($note)) {
         $errors[] = 'Tous les champs sont obligatoires.';
