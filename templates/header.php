@@ -6,6 +6,7 @@
   require_once('lib/security.php');
 
   $currentPage = basename($_SERVER['SCRIPT_NAME']);
+  
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +37,7 @@
       require_once('lib/gestion_session.php');
       ?>
 
-      <div class="col-md-3 text-end">
+      <div class="col-md-12 text-end">
         <?php
         if(!isset($_SESSION['user'])) {?>
           <a href="login.php" class="btn btn-outline-primary me-2"> Se connecter</a>
